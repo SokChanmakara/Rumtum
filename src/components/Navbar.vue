@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<nav class="container">
     <h1>RUMTUM</h1>
     <!-- nav category -->
     <div class="navwrapper">
@@ -26,7 +26,7 @@
             <i class="pi pi-shopping-bag" style="color: 'var(--p-primary-color)'"></i>
         </div>
     </div>
-</div>
+</nav>
 </template>
 
 <script>
