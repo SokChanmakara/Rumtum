@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <h1>RUMTUM</h1>
 
+<div class="container">
+    <h1>RUMTUM</h1>
     <!-- nav category -->
     <div class="navwrapper">
         <div class="navcategory">
@@ -26,7 +26,7 @@
             <i class="pi pi-shopping-bag" style="color: 'var(--p-primary-color)'"></i>
         </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -38,6 +38,7 @@ export default {
 <style scoped>
 
     h1{
+        color:white;
         font-size: 20px;
     }
     h3{
@@ -49,6 +50,9 @@ export default {
         left:1%;
         position:relative;
         justify-content: space-between;
+        background: transparent;
+        margin-top: 20px;
+        z-index: 1000;
     }
     .navcategory{
         display:flex;
