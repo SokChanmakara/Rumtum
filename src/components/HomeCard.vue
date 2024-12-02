@@ -1,9 +1,9 @@
 <template>
     <section>
         <div class="card-container">
-            <div class="card">
+            <div class="card" :style="{ backgroundImage: `url(${image})` }">
                 <div class="card-text">
-                    <div class="text">Walk In Style</div>
+                    <div class="text">{{ title }}</div>
                     <ButtonShop/>
                 </div>
             </div>
@@ -14,6 +14,8 @@
 <script>
 import ButtonShop from './Button/ButtonShop.vue';
 export default {
+    name:'HomeCard',
+        props:["title", "image"],
     components:{
         ButtonShop
     }
@@ -23,12 +25,12 @@ export default {
 <style scoped>
     .card-container{
         display:flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
     .card{
-        width: 500px;
+        width: 450px;
         height: 500px;
-        background-image: url("../assets/images/card1.png");
+        /* background-image: url("../assets/images/card1.png"); */
         background-size:cover;
         background-repeat: no-repeat;
         margin-top: 20px;
@@ -44,6 +46,14 @@ export default {
         font-size:40px;
         font-family: "Poppins";
         color:white;
+    }
+    #recommend{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 24px;
+        font-family: "Poppins";
+        margin-top: 50px;
     }
 
 

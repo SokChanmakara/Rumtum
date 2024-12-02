@@ -237,12 +237,27 @@ img {
         display: none;
         background:#F77E8A;
         line-height: 40px;
-        padding:8px;
+        padding:16px;
         width:200px;
         height:auto;
     }
     .dropdown-menu:hover{
+        display: block; 
+    }
+    .dropdown-down:hover .dropdown-menu {
         display: block;
+        animation: dropDown 0.5s ease-in-out;
+    }
+
+    @keyframes dropDown {
+        0% {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
     .dropdown-item{
         color:white;
