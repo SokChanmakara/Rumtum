@@ -1,13 +1,16 @@
-<script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-
-</script>
-
 <template>
-  
-
+  <div class="wrapper">
+    <Headcard />
+  </div>
 </template>
 
-<style scoped>
+<script>
+import Headcard from './Components/Headcard.vue';
+export default {
+  components: {
+    Headcard,
+  },
+};
+</script>
 
-</style>
+<style scoped></style>
