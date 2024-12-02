@@ -16,8 +16,10 @@
             <div class="banner banner1">
                 <img src="../assets/images/Banner1.png" alt="">
             </div>
+            <div class="logo-box">
+                <h1 class="logo">RUMTUM</h1>
+            </div>
         </div>
-        <h1 class="logo">RUMTUM</h1>
 
         <div class="navwrapper">
             <div class="navcategory">
@@ -93,9 +95,7 @@
         </div>
 
         <div >
-            <div class="bannershop">
-                <button class="bannerbtn">Shop Now</button>
-            </div>
+            <ButtonShop/>
         </div>
     </div>
 </template>
@@ -103,9 +103,11 @@
 
 <script>
 import Navbar from './Navbar.vue'
+import ButtonShop from './Button/ButtonShop.vue';
 export default {
     components:{
-        Navbar
+        Navbar,
+        ButtonShop
     }
 }
 </script>
@@ -136,14 +138,7 @@ export default {
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .bannerbtn{
-        width:160px;
-        height: 60px;
-        font-size:22px;
-        color:white;
-        background: transparent;
-        border: 2px solid white;
-    }
+
 @keyframes sliding {
     0% {
         transform: translateX(0);
@@ -196,8 +191,7 @@ export default {
     color: white;
     z-index: 10;
     cursor:pointer;
-}
-
+}   
 .navcategory {
     display: flex;
     position: absolute;

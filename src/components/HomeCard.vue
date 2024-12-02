@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-text">
                     <div class="text">Walk In Style</div>
-                    <button class="bannerbtn">Shop Now</button>
+                    <ButtonShop/>
                 </div>
             </div>
         </div>
@@ -12,8 +12,11 @@
 </template>
 
 <script>
+import ButtonShop from './Button/ButtonShop.vue';
 export default {
-
+    components:{
+        ButtonShop
+    }
 }
 </script>
 
@@ -29,7 +32,6 @@ export default {
         background-size:cover;
         background-repeat: no-repeat;
         margin-top: 20px;
-        margin-left: 20px;
     }
     .card-text{
         display:flex;
@@ -43,13 +45,6 @@ export default {
         font-family: "Poppins";
         color:white;
     }
-    .bannerbtn{
-        width:160px;
-        height: 60px;
-        font-size:22px;
-        color:white;
-        background: transparent;
-        border: 2px solid white;
-    }
+
 
 </style>
