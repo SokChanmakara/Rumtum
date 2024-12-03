@@ -1,6 +1,6 @@
 <template>
     <div class="bannershop">
-        <button @click="toggleDisplay" class="bannerbtn">Shop Now</button>
+        <button @click="toggleDisplay" class="bannerbtn">{{ currentText }}</button>
         <LoginPopup v-if="display" @close="toggleDisplay"/>
     </div>
 </template>
@@ -13,17 +13,32 @@ export default {
     },
     data(){
         return{
-            display: false
+            display: false,
+            textOptions: [
+                'SHOP NOW',
+                'GET 20% OFF',
+            ],
+            currentIndex: 0
         };
+    },
+    computed: {
+        currentText() {
+            return this.textOptions[this.currentIndex];
+        }
+    },
+    mounted() {
+        setInterval(this.rotateText, 3000); 
     },
     methods: {
         toggleDisplay(){
             this.display = !this.display
+        },
+        rotateText() {
+            this.currentIndex = (this.currentIndex + 1) % this.textOptions.length;
         }
     }
 }
 </script>
-
 <style scoped>
     .bannerbtn{
         width:160px;
@@ -41,4 +56,4 @@ export default {
     button:hover{
         background: black;
     }
-</style>
+</style>stylestyle
