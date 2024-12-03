@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <img :src="images" alt="">
+        <img :src="isHovered ? Himage : images" alt="" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <div class="color-picker">
             <div class="color one" :style="{ backgroundColor: pri_color }"></div>
             <div class="color two" :style="{backgroundColor: sec_color}"></div>
@@ -16,6 +16,11 @@
 <script>
 export default {
     name: 'ProductList',
+    data() {
+        return {
+            isHovered: false
+        };
+    },
     props:
     [
         "name",
@@ -23,9 +28,9 @@ export default {
         "pri_color",
         "sec_color",
         "ter_color",
-        "images"
-    ]
-    
+        "images",
+        "Himage"
+    ],
 }
 </script>
 

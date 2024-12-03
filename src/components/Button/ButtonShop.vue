@@ -34,8 +34,11 @@ export default {
         border: 2px solid white;
     }
     .bannerbtn:active{
-        background-color: #F77E8A;
+    background-color: #F77E8A;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+    }
+    button:hover{
+        background: black;
     }
 </style>

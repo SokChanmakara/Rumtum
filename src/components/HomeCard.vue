@@ -1,7 +1,9 @@
 <template>
     <section>
         <div class="card-container">
-            <div class="card" :style="{ backgroundImage: `url(${image})` }">
+            <div class="card" :style="{ backgroundImage: `url(${image})` }"
+            @mouseover="hover=true"
+            @mouseleave="hover=false">
                 <div class="card-text">
                     <div class="text">{{ title }}</div>
                     <ButtonShop/>
@@ -34,7 +36,7 @@ export default {
         background-size:cover;
         background-repeat: no-repeat;
         margin-top: 20px;
-    }
+    }   
     .card-text{
         display:flex;
         flex-direction: column;
