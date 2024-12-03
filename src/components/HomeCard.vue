@@ -41,6 +41,7 @@ export default {
         justify-content: flex-end;
         align-items: center;
         height: 100%;
+        padding:10px;
     }
     .text{
         font-size:40px;
