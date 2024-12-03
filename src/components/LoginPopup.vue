@@ -98,6 +98,11 @@ export default {
         width:360px;
         height:50px;
     }
+    #login:hover{
+        background-color: white;
+        color:black;
+        border:1px solid black;
+    }
     #register{
         display:flex;
         justify-content: center;
@@ -109,6 +114,7 @@ export default {
     }
     div > a{
         text-decoration: underline;
+        cursor: pointer;
     }
     .currency-list{
         display:flex;

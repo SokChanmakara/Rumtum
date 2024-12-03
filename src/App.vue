@@ -141,6 +141,7 @@ const products = ref([
 <style scoped>
     .homecard{
         display:flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
     }
     .productlist{
