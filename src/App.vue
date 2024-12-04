@@ -1,14 +1,17 @@
 <template>
   <div class="wrapper">
-    <Headcard />
+    <CreateAccount />
+    <Login />
   </div>
 </template>
 
 <script>
-import Headcard from './Components/Headcard.vue';
+// import CreateAccount from './Components/CreateAccount.vue';
+import Login from './Components/Login.vue';
 export default {
   components: {
-    Headcard,
+    // CreateAccount,
+    Login,
   },
 };
 </script>
