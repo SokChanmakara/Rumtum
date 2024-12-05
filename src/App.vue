@@ -1,12 +1,19 @@
 <template>
-<Navbar/>
-
+  <div class="wrapper">
+    <CreateAccount />
+    <Login />
+  </div>
 </template>
-<script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-import Navbar from "./components/Navbar.vue";
+
+<script>
+// import CreateAccount from './Components/CreateAccount.vue';
+import Login from './Components/Login.vue';
+export default {
+  components: {
+    // CreateAccount,
+    Login,
+  },
+};
 </script>
 
-
-<style scoped>
-</style>
+<style scoped></style>
