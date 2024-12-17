@@ -7,11 +7,13 @@
                         <button class="close-btn" @click="closePopup">
                             <i class="pi pi-times"></i>
                         </button>
-                        <button id="login">Login</button>
+                            <button id="login" @click="handleLogin">Login</button>
                     </div>
                     <div id="register">
                         <p>New User?</p>
-                        <a>Register Now</a>
+                        <router-link to="/signup">
+                            <a>Register Now</a>
+                        </router-link>
                     </div>
 
                     <div class="currency-wrapper">
@@ -35,13 +37,21 @@
     </div>
 </template>
 
-<script>
-export default {
-    methods: {
-        closePopup() {
-            this.$emit('close');
-        }
-    }
+<script setup>
+import { useRouter } from 'vue-router'
+import Login from './LoginPage/Login.vue'
+
+const router = useRouter()
+
+const emit = defineEmits(['close'])
+
+const closePopup = () => {
+    emit('close')
+}
+
+const handleLogin = async () => {
+    closePopup()
+    await router.push('/login')
 }
 </script>
 
@@ -113,8 +123,12 @@ export default {
         font-family: "Poppins";
     }
     div > a{
-        text-decoration: underline;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
         cursor: pointer;
+    }
+    div > a :hover{
+        color:rgb(212, 122, 137);
     }
     .currency-list{
         display:flex;
