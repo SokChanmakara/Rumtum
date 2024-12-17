@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <div class="create-account">
     <h2>CREATE AN ACCOUNT</h2>
     <div class="container">
@@ -48,7 +49,9 @@
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue';
 export default {
+  components: { Navbar },
   data() {
     return {
       form: {
@@ -69,13 +72,15 @@ export default {
 </script>
 
 <style scoped>
+
 .create-account {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: calc(100vh - 48px);
+  height: 100vh; 
   background-color: #ffffff;
-  padding-top: 40px;
+  padding-top: 150px;
+  overflow: hidden; 
 }
 
 h2 {

@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
     <div class="login">
         <h1>My Account</h1>
       <div class="container">
@@ -42,14 +43,20 @@
                     for information necessary to make the purchase process 
                     faster and easier.</p>
             </div>
-          <button class="create-account-btn">CREATE AN ACCOUNT</button>
+            <router-link to="/signup">
+              <button class="create-account-btn">CREATE AN ACCOUNT</button>
+            </router-link>
         </div>
       </div>
     </div>
   </template>
   
   <script>
+import Navbar from '../Navbar.vue';
   export default {
+    components:{
+      Navbar
+    },
     data() {
       return {
         form: {
@@ -68,14 +75,15 @@
   </script>
   
   <style scoped>
- 
- .login {
+
+.login {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: calc(100vh - 48px);
   background-color: #ffffff;
-  padding-top: 40px;
+  padding-top: 150px;
+  overflow: hidden;
 }
 h1 {
   font-family: "Poppins", sans-serif;
@@ -104,7 +112,6 @@ h2 {
   }
 
   .pw {
-    
     margin-right: 20px;
     margin-bottom: 20px;
     text-align: right;
