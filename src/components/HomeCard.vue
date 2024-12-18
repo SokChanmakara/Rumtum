@@ -1,9 +1,16 @@
 <template>
     <section>
         <div class="card-container">
-            <div class="card" :style="{ backgroundImage: `url(${image})` }"
+            <!-- <div class="card" :style="{ backgroundImage: `url(${image})` }"
             @mouseover="hover=true"
             @mouseleave="hover=false">
+                <div class="card-text">
+                    <div class="text">{{ title }}</div>
+                    <ButtonShop/>
+                </div>
+            </div> -->
+            <div class="card">
+                <img :src="image" alt="homecard image">
                 <div class="card-text">
                     <div class="text">{{ title }}</div>
                     <ButtonShop/>
@@ -20,6 +27,9 @@ export default {
         props:["title", "image"],
     components:{
         ButtonShop
+    },
+    mounted() {
+        console.log(' Title:', this.title)
     }
 }
 </script>
@@ -29,26 +39,40 @@ export default {
         display:flex;
         justify-content: space-evenly;
     }
+    .card img{
+        transition: transform .5s ease;
+    }
+    .card:hover img{
+        transform:scale(1.5);
+    }
     .card{
         width: 450px;
         height: 500px;
         /* background-image: url("../assets/images/card1.png"); */
-        background-size:cover;
-        background-repeat: no-repeat;
         margin-top: 20px;
+        overflow:hidden;
+        position:relative;
     }   
     .card-text{
+        position:absolute;
+        top:150px;
+        right:50px;
         display:flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
+        width:100%;
         height: 100%;
         padding:10px;
+    }
+    .card-text:hover{
+        right:10px;
     }
     .text{
         font-size:40px;
         font-family: "Poppins";
         color:white;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
     }
     #recommend{
         display:flex;
