@@ -15,6 +15,7 @@
             :key="product.name"
             />
     </div>
+    <footerPage/>
     </template>
     <script setup>
     // import { RouterLink, RouterView } from 'vue-router'
@@ -22,6 +23,7 @@
     import HomeCard from "@/components/HomeCard.vue";
     import ProductList from "@/components/ProductList.vue";
     import Banner from "@/components/Banner.vue";
+    import footerPage from "@/components/footerPage.vue";
     // import Navbar from "./components/Navbar.vue";
     
     const cards = ref([

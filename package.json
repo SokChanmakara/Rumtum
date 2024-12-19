@@ -13,6 +13,7 @@
     "pinia": "^2.2.6",
     "primeicons": "^7.0.0",
     "rumtum": "file:",
+    "soul_society": "file:",
     "vue": "^3.5.12",
     "vue-router": "^4.5.0"
   },
