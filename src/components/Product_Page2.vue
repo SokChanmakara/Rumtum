@@ -23,7 +23,7 @@
               <span>(127 reviews)</span>
             </div>
           </div>
-          <button class="write">Write a Review</button>
+          <h2 class="write">Write a Review</h2>
         </div>
   
         <div class="review-list">
@@ -74,7 +74,7 @@
                 💬 {{ review.comments.length }} Reply
               </button>
             </div>
-            
+
   
             <!-- I want here saving the posted comment :3 -->
 
@@ -271,20 +271,20 @@
     color: #ffd700;
   } 
   .write {
-    padding: 10px 20px;
-    background: #000;
-    color: white;
+    padding: 20px 50px;
+    color: rgb(255, 255, 255);
     border: none;
-    cursor: pointer;
+    /* cursor: pointer; */
   } 
   .review {
     border-bottom: 1px solid #ddd;
     padding: 20px 0;
   } 
   .user {
-    display: flex;
+   display: flex;
     gap: 15px;
     margin-bottom: 15px;
+
   }  
   .avatar {
     width: 50px;
@@ -337,6 +337,7 @@
   }  
   .comment {
     margin-bottom: 15px;
+
   }  
   .add-comment {
     display: flex;
@@ -350,7 +351,7 @@
   } 
   .add-comment button {
     padding: 8px 15px;
-    background: #000;
+    background: #050000;
     color: white;
     border: none;
     cursor: pointer;
@@ -397,7 +398,7 @@
       padding: 15px 20px;
     }    
     .stats {
-      flex-direction: column;
+      flex-direction: row;
       gap: 15px;
     }    
     .photos img {

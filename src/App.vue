@@ -1,7 +1,9 @@
 <template>
-    <Review/>
-    <CommentSection/>
+    <!-- <Review/>
+    <CommentSection/> -->
+    <carts/>
     <Recommended/>
+
     <!-- <div class="app">
       <div class="container">
         <div class="scroll-wrap">
@@ -23,12 +25,15 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue'
+  import { createBlock, ref } from 'vue'
   import Review from './components/Product_Page1.vue';
   import CommentSection from './components/Product_Page2.vue';
+  import carts from './components/Cart.vue';
   import Recommended from './components/Product_Page3.vue';
   // import Comment from './components/Comment.vue'
   import footerComponent from './components/footerComponent.vue';
+import Cart from './components/Cart.vue';
+import { ImageOff } from 'lucide-vue-next';
 
   // const comments = ref([
   //   {
