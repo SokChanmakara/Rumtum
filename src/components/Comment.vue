@@ -54,6 +54,15 @@
   </script>
   
   <style scoped>
+   .app {
+    min-height: 60vh;
+    background: #fce4ec;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .card {
     background: white;
     padding: 2rem;
@@ -117,4 +126,5 @@
     font-weight: bold;
     color: #333;
   }
+
   </style>
