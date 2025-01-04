@@ -41,7 +41,7 @@
 
         <div class="footer-col">
           <h3>Contact Us</h3>
-          <p>soulsociety.com</p>
+          <p>rumtum.com</p>
           <div class="footer-icons">
             <a href="#" class="footer-icon"><i class="pi pi-facebook"></i></a>
             <a href="#" class="footer-icon"><i class="pi pi-instagram"></i></a>
@@ -141,6 +141,10 @@
 
 .footer-pay img {
   height: 2rem;
+}
+
+.footer-col > p{
+  margin-bottom:16px;
 }
 
 @media (max-width: 768px) {
