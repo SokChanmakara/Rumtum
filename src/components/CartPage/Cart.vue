@@ -317,9 +317,10 @@
   }
   
   .continue {
-    background-color: rgb(246, 176, 240);
+    background: #ffffff;
+    cursor: pointer;
     color: #000;
-    border: none;
+    border: 2px solid black;
   }
   
   @media (max-width: 768px) {
