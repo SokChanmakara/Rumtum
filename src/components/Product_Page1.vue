@@ -1,12 +1,10 @@
 <template>
   <div class="product">
-    <!-- Breadcrumb -->
     <div class="breadcrumb">
       <router-link to="/">Home</router-link> | Martha Knit Top
     </div>
 
     <div class="product-container">
-      <!-- Thumbnails -->
       <div class="thumbnails">
         <img 
           v-for="(image, index) in productImages" 
@@ -18,12 +16,10 @@
         />
       </div>
 
-      <!-- Main Image -->
       <div class="main-image">
         <img :src="productImages[selectedImage]" alt="blah" />
       </div>
 
-      <!-- Product Info -->
       <div class="info">
         <h1 class="title">Martha Knit Top</h1>
         
@@ -99,25 +95,17 @@
       </div>
     </div>
   </div>
-  <!-- <div class="thumbnails">
-          <image src="../assets/visa.png" alt="Visa" />
-          <image src="../assets/aba.png" alt="ABA" />
-          <image src="../assets/acleda.png" alt="Acleda" />
-          <image src="../assets/mastercard.png" alt="Mastercard" />
-        </div> -->
 </template>
 
 <script setup>
 import { ref } from 'vue'
 
-// State
 const selectedImage = ref(0)
 const selectedColor = ref(0)
 const selectedSize = ref(0)
 const quantity = ref(1)
 const inWishlist = ref(false)
 
-// Product data
 const productImages = [
   '../src/assets/Green1.png',
   '../src/assets/Green2.png',
@@ -151,8 +139,6 @@ const paymentMethods = [
   'ABA Bank',
   'Acleda Bank'
 ]
-
-// Methods
 const incrementQuantity = () => {
   quantity.value++
 }

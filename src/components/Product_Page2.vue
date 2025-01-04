@@ -1,6 +1,5 @@
 <template>
     <div class="reviews">
-      <!-- Tab Navigation -->
       <div class="tabs">
         <button 
           v-for="tab in tabs" 
@@ -12,7 +11,6 @@
         </button>
       </div>
   
-      <!-- Reviews Content -->
       <div v-if="activeTab === 'Reviews'" class="content">
         <div class="stats">
           <div class="rating">
@@ -28,7 +26,6 @@
           <button class="write">Write a Review</button>
         </div>
   
-        <!-- Individual Reviews -->
         <div class="review-list">
           <div v-for="review in reviews" :key="review.id" class="review">
             <div class="user">
@@ -77,8 +74,11 @@
                 💬 {{ review.comments.length }} Reply
               </button>
             </div>
+            
   
-            <!-- Comments Section -->
+            <!-- I want here saving the posted comment :3 -->
+
+
             <div v-if="review.showComments" class="comments">
               <div v-for="comment in review.comments" :key="comment.id" class="comment">
                 <div class="user">
