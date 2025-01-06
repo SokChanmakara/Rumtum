@@ -9,7 +9,7 @@
                 </div>
                 <p>Add to Wishlist</p>
             </div>
-            <div class="icon-text">
+            <div class="icon-text" @click="toggleMiniCart">
                 <div class="icon">
                     <i class="pi pi-shopping-cart"></i>
                 </div>
@@ -22,7 +22,10 @@
                 <p>Quick View</p>
             </div>
         </div>
-        <img :src="isHovered ? Himage : images" :alt="name" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+        <div v-if="showMiniCart">
+            <MiniCart/>
+        </div>
+        <img v-else :src="isHovered ? Himage : images" :alt="name" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <div class="color-picker">
             <div class="color one" :style="{ backgroundColor: pri_color }"></div>
             <div class="color two" :style="{backgroundColor: sec_color}"></div>
@@ -36,12 +39,18 @@
 </template>
 
 <script>
+import MiniCart from './MiniCartPage/MiniCart.vue';
+
 export default {
     name: 'ProductList',
     data() {
         return {
-            isHovered: false
+            isHovered: false,
+            showMiniCart: false
         };
+    },
+    components:{
+        MiniCart,
     },
     props:
     [
@@ -53,6 +62,11 @@ export default {
         "images",
         "Himage"
     ],
+    methods:{
+        toggleMiniCart(){
+            this.showMiniCart = !this.showMiniCart;
+        }
+    }
 }
 </script>
 

@@ -27,8 +27,12 @@
         </div>
         <p class="tax">Tax included</p>
         <div class="actions">
-          <button class="checkout">PROCEED TO CHECKOUT</button>
-          <button class="view">VIEW CART</button>
+          <router-link to="/checkout">
+            <button class="checkout">PROCEED TO CHECKOUT</button>
+          </router-link>
+          <router-link to="/cart">
+            <button class="view">VIEW CART</button>
+          </router-link>
         </div>
       </div>
     </div>

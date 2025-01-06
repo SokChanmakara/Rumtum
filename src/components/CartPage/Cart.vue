@@ -85,8 +85,12 @@
       </div>
   
       <div class="actions">
-        <button class="checkout">PROCEED TO CHECKOUT</button>
-        <button class="continue">CONTINUE SHOPPING</button>
+        <router-link to="/checkout">
+          <button class="checkout">PROCEED TO CHECKOUT</button>
+        </router-link>
+        <router-link to="/">
+          <button class="continue">CONTINUE SHOPPING</button>
+        </router-link>
       </div>
     </div>
   </template>
