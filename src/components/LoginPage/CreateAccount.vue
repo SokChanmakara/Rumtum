@@ -97,7 +97,7 @@ h2 {
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   
 }
 

@@ -100,14 +100,9 @@ h2 {
   text-align: center;
 }
   .container {
+    max-width: 1500px;
     display: flex;
     justify-content: space-between;
-    /* background: white;
-    padding: 40px;
-    /* border-radius: 4px; */
-    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
-    /* width: 100%;
-    max-width: 1400px; */ 
     
   }
 
@@ -119,7 +114,7 @@ h2 {
   }
   
   .login-box, .new-customer-box {
-    width: 45%;
+    width: 48%;
     padding: 40px;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -128,6 +123,7 @@ h2 {
   }
   .form-group {
   margin-bottom: 20px;
+ 
 }
 input[type="email"],
 input[type="password"] {
@@ -154,9 +150,7 @@ input[type="password"] {
   
   .new-customer-box {
     text-align: center;
-    
-    
-    
+
   }
   .paragraph {
     text-align: center;
