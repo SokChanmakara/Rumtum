@@ -1,10 +1,17 @@
 <template>
-    <div class="cart">
-      <header class="header">
-        <nav class="nav">Home | YOUR CART</nav>
-      </header>
+  <header class="header">
+        <nav class="nav">
+          <router-link to="/">
+            <button class="nav">Home</button>
+        </router-link>
+        | My Cart
+        </nav>
+  </header>
+    
+  <div class="cart">
       
-      <h1 class="title">YOUR CART</h1>
+      
+      <h1 class="title">MY CART</h1>
       
       <table class="items">
         <thead>
@@ -178,11 +185,15 @@
   }
   
   .header {
-    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
   }
   
   .nav {
+    padding: 10px 20px;
     color: #666;
+    background: transparent;
+    border:none;
+    font-size:15px;
   }
   
   .title {

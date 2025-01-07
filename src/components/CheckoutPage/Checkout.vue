@@ -1,7 +1,10 @@
 <template>
     <div class="page">
       <nav class="nav">
-        Home | Martha Knit Top | Checkout
+        <router-link to="/">
+            <button class="nav">Home</button>
+        </router-link>
+        | Checkout
       </nav>
   
       <div class="wrap">
@@ -180,6 +183,7 @@
         </div>
       </div>
     </div>
+  
   </template>
   
   <script setup>
@@ -251,6 +255,9 @@
   .nav {
     padding: 10px 20px;
     color: #666;
+    background: transparent;
+    border:none;
+    font-size:15px;
   }
   .wrap {
     max-width: 1300px;

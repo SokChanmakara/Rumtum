@@ -33,7 +33,6 @@
                         <ul class="dropdown-menu">
                             <li><a href="" class="dropdown-item">MEN</a></li>
                             <li><a href="" class="dropdown-item">WOMEN</a></li>
-                            <li><a href="" class="dropdown-item">KID</a></li>
                         </ul>
                     </div>
                     
@@ -62,7 +61,6 @@
                 </div>
             </div>
 
-        <!-- Navbar icons -->
         <div class="nav icon">
             <div>
                 <i class="pi pi-search" style="color: black; transition: color 0.3s;" @mouseover="$event.target.style.color='#F77E8A'" @mouseout="$event.target.style.color='black'"></i>
@@ -121,7 +119,7 @@ export default {
     font-size:20px;
 }
 .navBtn:hover{
-    color: #F77E8A;
+    color: #efaab1;
     cursor:pointer;
 }
 
@@ -141,7 +139,7 @@ export default {
     }
     .dropdown-menu{
         display: none;
-        background:#F77E8A;
+        background:#e2959b;
         line-height: 40px;
         padding:16px;
         width:200px;

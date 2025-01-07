@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ButtonShop from './Button/ButtonShop.vue';
+import ButtonShop from '../Button/ButtonShop.vue';
 export default {
     name:'HomeCard',
         props:["title", "image"],
@@ -30,6 +30,7 @@ export default {
     .card-container{
         display:flex;
         justify-content: space-evenly;
+        /* width: 500px; */
     }
     .card img{
         transition: transform .5s ease;
@@ -38,7 +39,7 @@ export default {
         transform:scale(1.5);
     }
     .card{
-        /* width: 450px; */
+        /* width: 400px; */
         height: 500px;
         /* background-image: url("../assets/images/card1.png"); */
         margin-top: 20px;

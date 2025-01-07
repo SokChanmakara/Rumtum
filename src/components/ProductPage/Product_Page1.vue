@@ -97,7 +97,7 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { ref } from 'vue'
 
 const selectedImage = ref(0)
@@ -152,6 +152,7 @@ const decrementQuantity = () => {
 const toggleWishlist = () => {
   inWishlist.value = !inWishlist.value
 }
+
 </script>
 
 <style scoped>

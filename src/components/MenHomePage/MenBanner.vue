@@ -2,10 +2,10 @@
     <div class="banner-container">
         <div class="imgWrapper">
             <div class="banner banner1">
-                <img src="../assets/images/Banner1.png" alt="">
+                <img src="@/assets/images/Banner1.png" alt="">
             </div>
             <div class="banner banner2">
-                <img src="../assets/images/Banner2.png" alt="">
+                <img src="@/assets/MenPics/BlueBoard.png" alt="">
                 <div class="bannertitle">
                     <h1 class="bannertitle1">Take Your Style</h1>
                 </div><div class="bannertitle2">
@@ -14,7 +14,7 @@
                 
             </div>
             <div class="banner banner1">
-                <img src="../assets/images/Banner1.png" alt="">
+                <img src="@/assets/images/Banner1.png" alt="">
             </div>
             <div class="logo-box">
                 <h1 class="logo">RUMTUM</h1>
@@ -24,7 +24,9 @@
         <div class="navwrapper">
             <div class="navcategory">
                 <div class="dropdown-down">
-                    <button class="navBtn">HOME</button>
+                    <router-link to="/">
+                        <button class="navBtn">HOME</button>
+                    </router-link>
                 </div>
                 <div class="dropdown">
 
@@ -46,12 +48,8 @@
                     <div class="dropdown-down two">
                         <button class="navBtn">CATEGORY</button>
                         <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Women</a></li>
-                            <li>
-                                <router-link to="/menhomeview">
-                                    <a href="" class="dropdown-item">Men</a>
-                                </router-link>
-                            </li>
+                            <li><a href="" class="dropdown-item">MEN</a></li>
+                            <li><a href="" class="dropdown-item">WOMEN</a></li>
                         </ul>
                     </div>
                     
@@ -105,8 +103,8 @@
 
 
 <script>
-import Navbar from './Navbar.vue'
-import ButtonShop from './Button/ButtonShop.vue';
+import Navbar from '../Navbar.vue'
+import ButtonShop from '../Button/ButtonShop.vue';
 export default {
     components:{
         Navbar,

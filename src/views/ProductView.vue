@@ -16,7 +16,7 @@ import footerPage from '../components/footerPage.vue'
 
 export default {
     components:{
-        Comment,
+        // Comment,
         Product_Page1,
         Product_Page2,
         Product_Page3,

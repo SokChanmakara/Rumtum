@@ -3,10 +3,12 @@ import Cart from '@/components/CartPage/Cart.vue'
 import Checkout from '@/components/CheckoutPage/Checkout.vue'
 import CreateAccount from '@/components/LoginPage/CreateAccount.vue'
 import Login from '@/components/LoginPage/Login.vue'
+import MenBanner from '@/components/MenHomePage/MenBanner.vue'
 import MiniCart from '@/components/MiniCartPage/MiniCart.vue'
 import HomeView from '@/views/HomeView.vue'
 import ProductView from '@/views/ProductView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import MenHomeView from '@/views/MenHomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +52,16 @@ const router = createRouter({
       path:'/checkout',
       name:'checkoutPage',
       component:Checkout
+    },
+    // {
+    //   path:'/menbanner',
+    //   name:'Menbanner',
+    //   component:MenBanner
+    // },
+    {
+      path:'/menhomeview',
+      name:'Menhomeview',
+      component:MenHomeView
     },
   
   ],
