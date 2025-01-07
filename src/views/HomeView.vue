@@ -15,6 +15,8 @@
             :key="product.name"
             />
     </div>
+
+    
     <div class="rate">
       <div class="rating_contain">
         <div class="scroll-wrap">
