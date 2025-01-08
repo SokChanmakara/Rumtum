@@ -9,7 +9,7 @@
                 </div>
                 <p>Add to Wishlist</p>
             </div>
-            <div class="icon-text" @click="toggleMiniCart">
+            <div class="icon-text" >
                 <div class="icon">
                     <i class="pi pi-shopping-cart"></i>
                 </div>
@@ -22,8 +22,8 @@
                 <p>Quick View</p>
             </div>
         </div>
-        <div v-if="showMiniCart">
-            <MiniCart/>
+        <div v-if="showMiniCart" >
+            <MiniCart />
         </div>
         <img v-else :src="isHovered ? Himage : images" :alt="name" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <div class="color-picker">
@@ -46,7 +46,8 @@ export default {
     data() {
         return {
             isHovered: false,
-            showMiniCart: false
+            showMiniCart: false,
+            display:false
         };
     },
     components:{
@@ -65,7 +66,7 @@ export default {
     methods:{
         toggleMiniCart(){
             this.showMiniCart = !this.showMiniCart;
-        }
+        },
     }
 }
 </script>

@@ -1,6 +1,9 @@
 <template>
     <div class="banner-container">
         <div class="imgWrapper">
+            <div id="minicart">
+            <MiniCart v-if="display" @close="toggleDisplay"/>
+            </div>
             <div class="banner banner1">
                 <img src="../assets/images/Banner1.png" alt="">
             </div>
@@ -80,7 +83,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Navbar icons -->
         <div class="nav icon">
             <div>
@@ -92,7 +94,7 @@
             <div>
                 <i class="pi pi-heart" style="color: white"></i>
             </div>
-            <div>
+            <div @click="toggleDisplay()">
                 <i class="pi pi-shopping-bag" style="color: white"></i>
             </div>
         </div>
@@ -107,15 +109,33 @@
 <script>
 import Navbar from './Navbar.vue'
 import ButtonShop from './Button/ButtonShop.vue';
+import MiniCart from './MiniCartPage/MiniCart.vue';
 export default {
     components:{
         Navbar,
-        ButtonShop
+        ButtonShop,
+        MiniCart
+    },
+    data(){
+        return{
+            display:false
+        }
+    },
+    methods:{
+        toggleDisplay(){
+            this.display = !this.display
+        }
     }
 }
 </script>
 
 <style scoped>
+    #minicart{
+        position:fixed;
+        top:60px;
+        right:10px;
+        z-index:1000;
+    }
     .bannertitle{
         position:absolute;
         font-family: serif;
@@ -224,6 +244,7 @@ export default {
     gap: 15px;
     z-index: 10;
     cursor:pointer;
+
 }
 
 img {

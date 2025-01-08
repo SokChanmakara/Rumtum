@@ -1,7 +1,14 @@
 <template>
     <div class="modal">
       <div class="lilcart">
-        <h2 class="title">YOUR CART ({{ totalItems }})</h2>
+        <div class="urcart">
+          <h2 class="title">YOUR CART ({{ totalItems }})</h2>
+          <div id="close" @click="closePop">
+            <i class="pi pi-times-circle"></i>
+          </div>
+        </div>
+        <div>
+        </div>
         <div class="ship">
           You have got FREE SHIPPING
         </div>
@@ -39,7 +46,7 @@
   </template>
   
   <script setup>
-  import { ref, computed } from 'vue'
+  import { ref, computed, defineEmits } from 'vue'
   
   const lilcartItems = ref([
     {
@@ -86,18 +93,32 @@
       lilcartItems.value.splice(index, 1)
     }
   }
+  const emit = defineEmits(['close'])
+  const closePop = () => {
+    emit('close')
+  }
+
   </script>
   
   <style scoped>
+  #close{
+    cursor: pointer;
+  }
+  .urcart{
+    display:flex;
+    justify-content: space-between;
+  }
   .modal {
     font-family: Arial, sans-serif;
     max-width: 400px;
     margin: 0 auto;
+    
   }
   
   .lilcart {
     border: 2px solid rgb(0, 0, 0);
     padding: 20px;
+    background: white;
   }
   
   .title {
