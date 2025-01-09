@@ -3,7 +3,7 @@
         <div class="icon-wrapper" :style="{ opacity: isHovered ? 1 : 0 }" 
             @mouseenter="isHovered = true" 
             @mouseleave="isHovered = false">
-            <div class="icon-text" @click="addToWishList">
+            <div class="icon-text" @click="toggleWishList">
                 <div class="icon">
                     <i class="pi pi-heart" :class="{'active': isInWishlist}"></i>
                 </div>
@@ -88,10 +88,10 @@ export default {
     },
     setup(props){
         const wishlistStore = useWishlistStore();
-        const isInWishlist = computed (() => {
-            return wishlistStore.wishlist.some(item => item.id === props.id);
-        });
-        const addToWishList = () => {
+        const isInWishlist = computed (() => 
+            wishlistStore.wishlist.some(item => item.id === props.id)
+        );
+        const toggleWishList = () => {
             const product = {
                 id: props.id,
                 name: props.name,
@@ -106,7 +106,7 @@ export default {
             }
         };
         return {
-            addToWishList,
+            toggleWishList,
             isInWishlist
         }
     },
@@ -118,16 +118,6 @@ export default {
     components:{
         MiniCart,
     },
-    props:
-    [
-        "name",
-        "price",
-        "pri_color",
-        "sec_color",
-        "ter_color",
-        "images",
-        "Himage"
-    ],
     
 }
 </script>

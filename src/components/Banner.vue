@@ -1,4 +1,87 @@
 <template>
+    <div class=sticky-nav :class="{'scrolled' : isScrolled}">
+            <div class="logo-box">
+                <h1 class="logo">RUMTUM</h1>
+            </div>
+    
+            <div class="navwrapper">
+                <div class="navcategory">
+                    <div class="dropdown-down">
+                        <button class="navBtn">HOME</button>
+                    </div>
+                    <div class="dropdown">
+    
+                        <div class="dropdown-down one">
+                            <button class="navBtn">SHOP</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="dropdown-item">SNEAKER</a></li>
+                                <li><a href="" class="dropdown-item">T-SHIRT</a></li>
+                                <li><a href="" class="dropdown-item">HOODIES</a></li>
+                                <li><a href="" class="dropdown-item">PANTS</a></li>
+                                <li><a href="" class="dropdown-item">SHORTS</a></li>
+                                <li><a href="" class="dropdown-item">VESTS</a></li>
+                                <li><a href="" class="dropdown-item">SWEATERS</a></li>
+                                <li><a href="" class="dropdown-item">TOP</a></li>
+                                <li><a href="" class="dropdown-item">JACKETS</a></li>
+                            </ul>
+                        </div>
+    
+                        <div class="dropdown-down two">
+                            <button class="navBtn">CATEGORY</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="dropdown-item">Women</a></li>
+                                <li>
+                                    <router-link to="/menhomeview">
+                                        <a href="" class="dropdown-item">Men</a>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dropdown-down two">
+                            <button class="navBtn">ACCESSORIES</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="dropdown-item">CAPS</a></li>
+                                <li><a href="" class="dropdown-item">BAGS</a></li>
+                                <li><a href="" class="dropdown-item">SOCKS</a></li>
+                                <li><a href="" class="dropdown-item">KEYCHAINS</a></li>
+                                <li><a href="" class="dropdown-item">BEANIES</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dropdown-down two">
+                            <button class="navBtn">BRANDS</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="dropdown-item">VANS</a></li>
+                                <li><a href="" class="dropdown-item">ADIDAS</a></li>
+                                <li><a href="" class="dropdown-item">SOUL</a></li>
+                                <li><a href="" class="dropdown-item">CASIO</a></li>
+                                <li><a href="" class="dropdown-item">CONVERSE</a></li>
+                            </ul>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            <!-- Navbar icons -->
+            <div class="nav icon">
+                <div class="icon">
+                    <i class="pi pi-search" style="color: white"></i>
+                </div>
+                <div class="icon">
+                    <i class="pi pi-user" style="color: white"></i>
+                </div>
+                <router-link to="/wishlist">
+                    <div class="icon">
+                        <i class="pi pi-heart" style="color: white"></i>
+                        <span v-if="wishlistCount > 0" class="wishlist-count">{{ wishlistCount }}</span>
+                    </div>
+                </router-link>
+                <div class="icon" @click="toggleDisplay()">
+                    <i class="pi pi-shopping-bag" style="color: white"></i>
+                </div>
+            </div>
+        </div>
     <div class="banner-container">
         <div class="imgWrapper">
             <div id="minicart">
@@ -19,88 +102,8 @@
             <div class="banner banner1">
                 <img src="../assets/images/Banner1.png" alt="">
             </div>
-            <div class="logo-box">
-                <h1 class="logo">RUMTUM</h1>
-            </div>
         </div>
-
-        <div class="navwrapper">
-            <div class="navcategory">
-                <div class="dropdown-down">
-                    <button class="navBtn">HOME</button>
-                </div>
-                <div class="dropdown">
-
-                    <div class="dropdown-down one">
-                        <button class="navBtn">SHOP</button>
-                        <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">SNEAKER</a></li>
-                            <li><a href="" class="dropdown-item">T-SHIRT</a></li>
-                            <li><a href="" class="dropdown-item">HOODIES</a></li>
-                            <li><a href="" class="dropdown-item">PANTS</a></li>
-                            <li><a href="" class="dropdown-item">SHORTS</a></li>
-                            <li><a href="" class="dropdown-item">VESTS</a></li>
-                            <li><a href="" class="dropdown-item">SWEATERS</a></li>
-                            <li><a href="" class="dropdown-item">TOP</a></li>
-                            <li><a href="" class="dropdown-item">JACKETS</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="dropdown-down two">
-                        <button class="navBtn">CATEGORY</button>
-                        <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Women</a></li>
-                            <li>
-                                <router-link to="/menhomeview">
-                                    <a href="" class="dropdown-item">Men</a>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="dropdown-down two">
-                        <button class="navBtn">ACCESSORIES</button>
-                        <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">CAPS</a></li>
-                            <li><a href="" class="dropdown-item">BAGS</a></li>
-                            <li><a href="" class="dropdown-item">SOCKS</a></li>
-                            <li><a href="" class="dropdown-item">KEYCHAINS</a></li>
-                            <li><a href="" class="dropdown-item">BEANIES</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="dropdown-down two">
-                        <button class="navBtn">BRANDS</button>
-                        <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">VANS</a></li>
-                            <li><a href="" class="dropdown-item">ADIDAS</a></li>
-                            <li><a href="" class="dropdown-item">SOUL</a></li>
-                            <li><a href="" class="dropdown-item">CASIO</a></li>
-                            <li><a href="" class="dropdown-item">CONVERSE</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- Navbar icons -->
-        <div class="nav icon">
-            <div>
-                <i class="pi pi-search" style="color: white"></i>
-            </div>
-            <div>
-                <i class="pi pi-user" style="color: white"></i>
-            </div>
-            <router-link to="/wishlist">
-                <div>
-                    <i class="pi pi-heart" style="color: white"></i>
-                    <span v-if="wishlistCount > 0" class="wishlist-count">{{ wishlistCount }}</span>
-                </div>
-            </router-link>
-            <div @click="toggleDisplay()">
-                <i class="pi pi-shopping-bag" style="color: white"></i>
-            </div>
-        </div>
+        
 
         <div >
             <ButtonShop/>
@@ -116,6 +119,7 @@ import MiniCart from './MiniCartPage/MiniCart.vue';
 import { useWishlistStore } from '@/stores/wishlist';
 import { storeToRefs } from 'pinia';
 export default {
+    name:'Banner',
     components:{
         Navbar,
         ButtonShop,
@@ -130,18 +134,50 @@ export default {
     },
     data(){
         return{
-            display:false
+            display:false,
+            isScrolled: false
         }
+    },
+    mounted(){
+        window.addEventListener('scroll',this.handleScroll)
+    },
+    unmounted(){
+        window.removeEventListener('scroll',this.handleScroll)
     },
     methods:{
         toggleDisplay(){
             this.display = !this.display
+        },
+        handleScroll(){
+            this.isScrolled = window.scrollY > 50
         }
     }
 }
 </script>
 
 <style scoped>
+    .sticky-nav{
+        position: sticky;
+        top: 0;
+        z-index:1000;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0;
+        margin:0;
+        background-color: transparent;
+        transition: all 0.3s ease;
+    }
+    .sticky-nav.scrolled {
+        background-color: pink;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .sticky-nav.scrolled .logo,
+    .sticky-nav.scrolled .navBtn {
+        color: #000;
+    }
+    .sticky-nav.scrolled .pi {
+        color: #000 !important;
+    }
     #minicart{
         position:fixed;
         top:60px;

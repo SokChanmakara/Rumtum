@@ -5,6 +5,7 @@
     </div>
     <div class="productlist">
         <ProductList v-for="product in products" 
+            :id="product.id"
             :name="product.name" 
             :price="product.price" 
             :pri_color="product.pri_color" 

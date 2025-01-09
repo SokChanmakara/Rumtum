@@ -39,14 +39,17 @@
   
   <script>
   import { useWishlistStore } from '@/stores/wishlist';
+import { storeToRefs } from 'pinia';
   export default {
     setup(){
       const wishlistStore = useWishlistStore();
+      const {wishlist} = storeToRefs(wishlistStore);
+
       const removeItem = (id) => {
         wishlistStore.removeFromWishlist(id);
       };
       return{
-        wishlistItems:wishlistStore.wishlist,
+        wishlistItems:wishlist,
         removeItem,
       }
     }
