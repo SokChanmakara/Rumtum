@@ -3,13 +3,13 @@
         <div class="icon-wrapper" :style="{ opacity: isHovered ? 1 : 0 }" 
             @mouseenter="isHovered = true" 
             @mouseleave="isHovered = false">
-            <div class="icon-text">
+            <div class="icon-text" @click="addToWishList">
                 <div class="icon">
-                    <i class="pi pi-heart"></i>
+                    <i class="pi pi-heart" :class="{'active': isInWishlist}"></i>
                 </div>
-                <p>Add to Wishlist</p>
+                <p>{{ isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}}</p>
             </div>
-            <div class="icon-text" >
+            <div class="icon-text" @click="toggleMiniCart" >
                 <div class="icon">
                     <i class="pi pi-shopping-cart"></i>
                 </div>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div v-if="showMiniCart" >
-            <MiniCart />
+            <MiniCart @click="toggleMiniCart"/>
         </div>
         <img v-else :src="isHovered ? Himage : images" :alt="name" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <div class="color-picker">
@@ -40,15 +40,80 @@
 
 <script>
 import MiniCart from './MiniCartPage/MiniCart.vue';
+import { useWishlistStore } from '@/stores/wishlist';
+import { computed } from 'vue';
 
 export default {
     name: 'ProductList',
+    props: {
+        id:{
+            type:String,
+            required:true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: String,
+            required: true
+        },
+        pri_color: {
+            type: String,
+            required:true
+        },
+        sec_color: {
+            type:String,
+            required:true
+        },
+        tri_color: {
+            type:String,
+            required:false
+        },
+        images: {
+            type: String,
+            required:true
+        },
+        Himage: {
+            type: String,
+            required:false
+        }
+    },
     data() {
         return {
             isHovered: false,
             showMiniCart: false,
             display:false
         };
+    },
+    setup(props){
+        const wishlistStore = useWishlistStore();
+        const isInWishlist = computed (() => {
+            return wishlistStore.wishlist.some(item => item.id === props.id);
+        });
+        const addToWishList = () => {
+            const product = {
+                id: props.id,
+                name: props.name,
+                price: parseFloat(props.price.replace('$', '')),
+                image: props.images,
+                colors: [props.pri_color, props.sec_color, props.ter_color].filter(Boolean)
+            };
+            if (isInWishlist.value) {
+                wishlistStore.removeFromWishlist(props.id);
+            } else{
+                wishlistStore.addToWishlist(product)
+            }
+        };
+        return {
+            addToWishList,
+            isInWishlist
+        }
+    },
+    methods:{
+        toggleMiniCart(){
+            this.showMiniCart = !this.showMiniCart;
+        }
     },
     components:{
         MiniCart,
@@ -63,11 +128,7 @@ export default {
         "images",
         "Himage"
     ],
-    methods:{
-        toggleMiniCart(){
-            this.showMiniCart = !this.showMiniCart;
-        },
-    }
+    
 }
 </script>
 
@@ -142,5 +203,11 @@ export default {
     }
     #price{
         color:#E30B0B;
+    }
+    .pi-heart.active {
+        color: #F77E8A;
+    }
+    .icon-text:hover{
+        cursor:pointer;
     }
 </style>

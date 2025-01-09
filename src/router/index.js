@@ -9,6 +9,7 @@ import HomeView from '@/views/HomeView.vue'
 import ProductView from '@/views/ProductView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import MenHomeView from '@/views/MenHomeView.vue'
+import WishList from '@/views/WishList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,11 @@ const router = createRouter({
       path:'/account',
       name:'myaccount',
       component:MyAccount
+    },
+    {
+      path:'/wishlist',
+      name:'wishlistPage',
+      component:WishList
     },
     {
       path:'/cart',

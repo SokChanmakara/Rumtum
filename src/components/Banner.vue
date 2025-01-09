@@ -91,9 +91,12 @@
             <div>
                 <i class="pi pi-user" style="color: white"></i>
             </div>
-            <div>
-                <i class="pi pi-heart" style="color: white"></i>
-            </div>
+            <router-link to="/wishlist">
+                <div>
+                    <i class="pi pi-heart" style="color: white"></i>
+                    <span v-if="wishlistCount > 0" class="wishlist-count">{{ wishlistCount }}</span>
+                </div>
+            </router-link>
             <div @click="toggleDisplay()">
                 <i class="pi pi-shopping-bag" style="color: white"></i>
             </div>
@@ -110,11 +113,20 @@
 import Navbar from './Navbar.vue'
 import ButtonShop from './Button/ButtonShop.vue';
 import MiniCart from './MiniCartPage/MiniCart.vue';
+import { useWishlistStore } from '@/stores/wishlist';
+import { storeToRefs } from 'pinia';
 export default {
     components:{
         Navbar,
         ButtonShop,
         MiniCart
+    },
+    setup(){
+        const wishlistStore = useWishlistStore();
+        const {wishlistCount} = storeToRefs(wishlistStore);
+        return{
+            wishlistCount
+        }
     },
     data(){
         return{
@@ -294,5 +306,21 @@ img {
     }
     .navBtn:hover + .dropdown-menu{
         display: block;
+    }
+    .icon-wrapper{
+        position:relative;
+        display: inline-block;
+    }
+    .wishlist-count {
+    position: absolute;
+    top: -10px;
+    right:26px;
+    background-color: #F77E8A;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    min-width: 18px;
+    text-align: center;
     }
 </style>

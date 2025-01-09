@@ -1,7 +1,9 @@
 <template>
     <nav class="nav">
         <div class="links">
-          <a href="#" class="link">Home</a>
+          <router-link to="/">
+            <a href="#" class="link">Home</a>
+          </router-link>
           <span class="sep">|</span>
           <a href="#" class="link">Wishlist</a>
         </div>
@@ -35,32 +37,45 @@
     </div>
   </template>
   
-  <script setup>
-  import { ref } from 'vue'
-  
-  const wishlistItems = ref([
-    {
-      id: 1,
-      name: 'Bella Turtleneck Sweater',
-      price: 320.00,
-      image: '../src/assets/Black.png',
-      colors: ['#8B0000', '#000000', '#808080']
-    },
-    {
-      id: 2,
-      name: 'Bella Turtleneck Sweater',
-      price: 320.00,
-      image: '../src/assets/Pink.png',
-      colors: ['#8B0000', '#000000', '#808080']
-    }
-  ])
-  
-  const removeItem = (id) => {
-    const index = wishlistItems.value.findIndex(item => item.id === id)
-    if (index !== -1) {
-      wishlistItems.value.splice(index, 1)
+  <script>
+  import { useWishlistStore } from '@/stores/wishlist';
+  export default {
+    setup(){
+      const wishlistStore = useWishlistStore();
+      const removeItem = (id) => {
+        wishlistStore.removeFromWishlist(id);
+      };
+      return{
+        wishlistItems:wishlistStore.wishlist,
+        removeItem,
+      }
     }
   }
+  // import { ref } from 'vue'
+
+  // const wishlistItems = ref([
+  //   {
+  //     id: 1,
+  //     name: 'Bella Turtleneck Sweater',
+  //     price: 320.00,
+  //     image: '../src/assets/Black.png',
+  //     colors: ['#8B0000', '#000000', '#808080']
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Bella Turtleneck Sweater',
+  //     price: 320.00,
+  //     image: '../src/assets/Pink.png',
+  //     colors: ['#8B0000', '#000000', '#808080']
+  //   }
+  // ])
+  
+  // const removeItem = (id) => {
+  //   const index = wishlistItems.value.findIndex(item => item.id === id)
+  //   if (index !== -1) {
+  //     wishlistItems.value.splice(index, 1)
+  //   }
+  // }
   </script>
   
   <style scoped>
