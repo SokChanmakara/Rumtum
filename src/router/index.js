@@ -9,6 +9,7 @@ import HomeView from '@/views/HomeView.vue'
 import ProductView from '@/views/ProductView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import MenHomeView from '@/views/MenHomeView.vue'
+import WomenHomeview from '@/views/WomenHomeview.vue'
 import WishList from '@/views/WishList.vue'
 
 const router = createRouter({
@@ -68,6 +69,11 @@ const router = createRouter({
       path:'/menhomeview',
       name:'Menhomeview',
       component:MenHomeView
+    },
+    {
+      path:'/womenhomeview',
+      name:'Womenhomeview',
+      component:WomenHomeview
     },
   
   ],

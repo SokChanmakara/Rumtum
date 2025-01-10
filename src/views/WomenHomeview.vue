@@ -1,12 +1,11 @@
 <template>
-    <MenBannerr/>
-
+    <Banner/>
     <div class="homecard">
-        <MenHomeCart  v-for="card in cards" :title="card.title" :image="card.image" :key="card.title"/>
+        <HomeCard  v-for="card in cards" :title="card.title" :image="card.image" :key="card.title"/>
     </div>
-
     <div class="productlist">
-        <MenProductListt v-for="product in products" 
+        <ProductList v-for="product in products" 
+            :id="product.id"
             :name="product.name" 
             :price="product.price" 
             :pri_color="product.pri_color" 
@@ -18,10 +17,11 @@
             />
     </div>
 
-     <div class="rate">
+    
+    <div class="rate">
       <div class="rating_contain">
         <div class="scroll-wrap">
-          <MenComment
+          <Comment
             v-for="item in comments"
             :key="item.name"
             :avatar="item.avatar"
@@ -33,21 +33,20 @@
         </div>
       </div>
     </div>
-    
+
     <footerPage/>
-</template>
-
-<script setup>
-import { ref } from "vue";
-import MenBannerr from '@/components/MenHomePage/MenBanner.vue'
-import MenHomeCart from "@/components/MenHomePage/MenHomeCart.vue";
-import MenProductListt from "@/components/MenHomePage/MenProductlist.vue";
-import MenComment from "@/components/MenHomePage/MenComment.vue";
-import footerPage from '@/components/footerPage.vue'
-
-
-
-const cards = ref([
+    </template>
+    <script setup>
+    // import { RouterLink, RouterView } from 'vue-router'
+    import { ref } from "vue";
+    import HomeCard from "@/components/HomeCard.vue";
+    import ProductList from "@/components/ProductList.vue";
+    import Banner from "@/components/Banner.vue";
+    import Comment from '@/components/Comment.vue'
+    import footerPage from "@/components/footerPage.vue";
+    // import Navbar from "./components/Navbar.vue";
+    
+    const cards = ref([
         {
             title: 'Walk In Style',
             image: "../src/assets/images/card1.png"
@@ -63,152 +62,160 @@ const cards = ref([
         {
             title: 'Pair In Style',
             image: "../src/assets/images/card4.png"
-        },
-
+        }
     ]);
-
+    
     const products = ref([
-        {
+        {   
+            id: "1",
             name: 'Cropped Ribbed',
             price: '$120.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Suit1.png",
-            Himage: "../src/assets/MenPics/Suit2.webp"
+            images: "../src/assets/images/Product1.png",
+            Himage: "../src/assets/images/Productone.png"
         },
-        {
+        {   
+            id: "2",
             name: 'Women Shorts',
             price: '$100.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/D1.webp",
-            Himage: "../src/assets/MenPics/D2.webp"
+            images: "../src/assets/images/Product2.png",
+            Himage: "../src/assets/images/Producttwo.png"
         },
-        {
+        {   
+            id: "3",
             name: 'Sneakers Girl',
             price: '$220.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Red1.webp",
-            Himage: "../src/assets/MenPics/Red2.webp"
+            images: "../src/assets/images/Product3.png",
+            Himage: "../src/assets/images/Productthree.png"
         },
-        {
+        {   
+            id: "4",
             name: 'Metal Buckles Skinny Belt',
             price: '$24.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Green1.webp",
-            Himage: "../src/assets/MenPics/Green2.webp"
+            images: "../src/assets/images/Product4.png",
+            Himage: "../src/assets/images/Productfour.png"
         },
-        {
+        {   
+            id: "5",
             name: 'Emotion Mini Dress',
             price: '$110.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Brown1.webp",
-            Himage: "../src/assets/MenPics/Brown2.webp"
+            images: "../src/assets/images/Product5.png",
+            Himage: "../src/assets/images/Productfive.png"
         }, 
-        {
+        {   
+            id: "6",
             name: 'Cropped Ribbed',
             price: '$120.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/J1.webp",
-            Himage: "../src/assets/MenPics/J2.webp"
+            images: "../src/assets/images/Product6.png",
+            Himage: "../src/assets/images/Productsix.png"
         },
-        {
+        {   
+            id: "7",
             name: 'Women Shorts',
             price: '$100.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Gray1.webp",
-            Himage: "../src/assets/MenPics/Gray2.webp"
+            images: "../src/assets/images/Product7.png",
+            Himage: "../src/assets/images/Productseven.png"
         },
-        {
+        {   
+            id: "8",
             name: 'Sneakers Girl',
             price: '$220.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Milk1.webp",
-            Himage: "../src/assets/MenPics/Milk2.webp"
+            images: "../src/assets/images/Product8.png",
+            Himage: "../src/assets/images/Producteight.png"
         },
-        {
+        {   
+            id: "9",
             name: 'Metal Buckles Skinny Belt',
             price: '$24.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/Black1.webp",
-            Himage: "../src/assets/MenPics/Black2.webp"
+            images: "../src/assets/images/Product9.png",
+            Himage: "../src/assets/images/Productnine.png"
         },
-        {
+        {   
+            id: "10",
             name: 'Emotion Mini Dress',
             price: '$110.00',
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/MenPics/White1.webp",
-            Himage: "../src/assets/MenPics/White2.webp"
+            images: "../src/assets/images/Product10.png",
+            Himage: "../src/assets/images/Productten.png"
         },
     ]);
 
     const comments = ref([
     {
-      avatar: '../src/assets/MenPics/White1.webp',
+      avatar: '../src/assets/images/C1.png',
       title: 'Feature Availability',
       text: 'This is a wonderful theme. Very easy to use. Very easy to customize. The new version has lots of great additions and is still easy to work with. Also, customer service excellent!',
       name: 'SIMON WILLIAMS',
       rating: 4
     },
     {
-      avatar: '../src/assets/MenPics/Black1.webp',
+      avatar: '../src/assets/images/C2.png',
       title: 'Theme Flexibility',
       text: 'This is a wonderful theme. Very easy to use. Very easy to customize. The new version has lots of great additions and is still easy to work with. Also, customer service excellent!',
       name: 'ROSSY OGAWA',
       rating: 4
     },
     {
-      avatar: '../src/assets/MenPics/Gray1.webp',
+      avatar: '../src/assets/images/C3.png',
       title: 'Incredible UI/UX',
       text: 'This is a wonderful theme. Very easy to use. Very easy to customize. The new version has lots of great additions and is still easy to work with. Also, customer service excellent!',
       name: 'AUTHOR\'S NAME',
       rating: 3
     },
     {
-      avatar: '../src/assets/MenPics/Red1.webp',
+      avatar: '../src/assets/images/C4.png',
       title: 'Excellent Support',
       text: 'The customer support for this theme is outstanding. Quick responses and always helpful. It\'s refreshing to see such dedication to customer satisfaction.',
       name: 'EMMA JOHNSON',
       rating: 5
     },
     {
-      avatar: '../src/assets/MenPics/Green1.webp',
+      avatar: '../src/assets/images/C5.png',
       title: 'Great Performance',
       text: 'I\'m impressed with how fast and smooth this theme runs. It\'s clear that a lot of optimization work has gone into it. My website has never been faster!',
       name: 'MICHAEL CHEN',
       rating: 4
     },
     {
-      avatar: '../src/assets/MenPics/D1.webp',
+      avatar: '../src/assets/images/C6.png',
       title: 'Easy Customization',
       text: 'As someone with limited coding experience, I found this theme incredibly easy to customize. The documentation is clear, and the options are intuitive.',
       name: 'SOPHIA RODRIGUEZ',
       rating: 2
     }
   ]);
+    </script>
     
-
-</script>
-
-<style scoped>
+    
+    <style scoped>
         .homecard{
             display:flex;
             flex-wrap: wrap;
@@ -221,7 +228,7 @@ const cards = ref([
         }
         .rate {
             min-height: 60vh;
-            background: #797777;
+            background: #fce4ec;
             padding: 2rem;
             display: flex;
             align-items: center;
@@ -264,5 +271,5 @@ const cards = ref([
             flex: 0 0 calc(100% - 1rem);
             }
         }
-
-</style>
+    </style>
+    
