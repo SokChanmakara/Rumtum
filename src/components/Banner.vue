@@ -1,5 +1,5 @@
 <template>
-    <div class=sticky-nav :class="{'scrolled' : isScrolled}">
+    <div class="sticky-nav" :class="{'scrolled': isScrolled}">
             <div class="logo-box">
                 <h1 class="logo">RUMTUM</h1>
             </div>
@@ -65,8 +65,11 @@
             </div>
             <!-- Navbar icons -->
             <div class="nav icon">
-                <div class="icon">
+                <div class="icon" @click="toggleSearch">
                     <i class="pi pi-search" style="color: white"></i>
+                </div>
+                <div v-if="showSearch" class="search-bar-container" ref="searchBar">
+                    <SearchBar/>
                 </div>
                 <div class="icon">
                     <i class="pi pi-user" style="color: white"></i>
@@ -116,6 +119,7 @@
 import Navbar from './Navbar.vue'
 import ButtonShop from './Button/ButtonShop.vue';
 import MiniCart from './MiniCartPage/MiniCart.vue';
+import SearchBar from './SearchBar.vue';
 import { useWishlistStore } from '@/stores/wishlist';
 import { storeToRefs } from 'pinia';
 export default {
@@ -123,7 +127,8 @@ export default {
     components:{
         Navbar,
         ButtonShop,
-        MiniCart
+        MiniCart,
+        SearchBar
     },
     setup(){
         const wishlistStore = useWishlistStore();
@@ -135,14 +140,17 @@ export default {
     data(){
         return{
             display:false,
-            isScrolled: false
+            isScrolled: false,
+            showSearch:false,
         }
     },
     mounted(){
         window.addEventListener('scroll',this.handleScroll)
+        document.addEventListener('click',this.handleClickedOutside)
     },
     unmounted(){
         window.removeEventListener('scroll',this.handleScroll)
+        document.removeEventListener('click',this.handleClickedOutside)
     },
     methods:{
         toggleDisplay(){
@@ -150,6 +158,15 @@ export default {
         },
         handleScroll(){
             this.isScrolled = window.scrollY > 50
+        },
+        toggleSearch(event){
+            event.stopPropagation()
+            this.showSearch = !this.showSearch
+        },
+        handleClickedOutside(event){
+            if(this.showSearch && this.$refs.searchBar && !this.$refs.searchBar.contains(event.target)){
+                this.showSearch = false
+            }
         }
     }
 }
@@ -175,14 +192,28 @@ export default {
     .sticky-nav.scrolled .navBtn {
         color: #000;
     }
+    .sticky-nav.scrolled .navBtn:hover {
+        color: #F77E8A;
+    }
     .sticky-nav.scrolled .pi {
         color: #000 !important;
+    }
+    .sticky-nav.scrolled .pi:hover {
+        color: #F77E8A !important;
     }
     #minicart{
         position:fixed;
         top:60px;
         right:10px;
         z-index:1000;
+    }
+    .search-bar-container {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    z-index: 2000;
+    background-color: white; 
     }
     .bannertitle{
         position:absolute;
@@ -294,6 +325,9 @@ export default {
     cursor:pointer;
 
 }
+.pi:hover{
+    color: #F77E8A;
+}
 
 img {
     width: 100%;
@@ -301,20 +335,23 @@ img {
     object-fit: cover;
 }
 
-    .dropdown{
+    .dropdown {
         display: flex;
-        gap:50px;
+        gap: 50px;
     }
-    .dropdown-menu{
+    .dropdown-menu {
         display: none;
-        background:#F77E8A;
+        background: black;
         line-height: 40px;
-        padding:16px;
-        width:200px;
-        height:auto;
+        padding: 16px;
+        width: 100vw;
+        height: auto;
+        position: fixed;
+        left: 0;
+        top: 60px; /* Adjust based on your navbar height */
     }
-    .dropdown-menu:hover{
-        display: block; 
+    .dropdown-menu:hover {
+        display: block;
     }
     .dropdown-down:hover .dropdown-menu {
         display: block;
