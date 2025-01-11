@@ -1,21 +1,5 @@
 <template>
-    <div class="banner-container">
-        <div class="imgWrapper">
-            <div class="banner banner1">
-                <img src="@/assets/boingirl2.png" alt="">
-            </div>
-            <div class="banner banner2">
-                <img src="@/assets/boingirl1.png" alt="">
-                <div class="bannertitle">
-                    <h1 class="bannertitle1">Take Your Style</h1>
-                </div><div class="bannertitle2">
-                    <h1 class="">To The Next Level</h1>
-                </div>
-                
-            </div>
-            <div class="banner banner1">
-                <img src="@/assets/boingirl2.png" alt="">
-            </div>
+    <div class=sticky-nav :class="{'scrolled' : isScrolled}">
             <div class="logo-box">
                 <h1 class="logo">RUMTUM</h1>
             </div>
@@ -105,22 +89,80 @@
         <div >
             <ButtonShop/>
         </div>
-    </div>
 </template>
 
 
 <script>
 import Navbar from './Navbar.vue'
 import ButtonShop from './Button/ButtonShop.vue';
+import MiniCart from './MiniCartPage/MiniCart.vue';
+import { useWishlistStore } from '@/stores/wishlist';
+import { storeToRefs } from 'pinia';
 export default {
     components:{
         Navbar,
-        ButtonShop
+        ButtonShop,
+        MiniCart
+    },
+    setup(){
+        const wishlistStore = useWishlistStore();
+        const {wishlistCount} = storeToRefs(wishlistStore);
+        return{
+            wishlistCount
+        }
+    },
+    data(){
+        return{
+            display:false,
+            isScrolled: false
+        }
+    },
+    mounted(){
+        window.addEventListener('scroll',this.handleScroll)
+    },
+    unmounted(){
+        window.removeEventListener('scroll',this.handleScroll)
+    },
+    methods:{
+        toggleDisplay(){
+            this.display = !this.display
+        },
+        handleScroll(){
+            this.isScrolled = window.scrollY > 50
+        }
     }
 }
 </script>
 
 <style scoped>
+    .sticky-nav{
+        position: sticky;
+        top: 0;
+        z-index:1000;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0;
+        margin:0;
+        background-color: transparent;
+        transition: all 0.3s ease;
+    }
+    .sticky-nav.scrolled {
+        background-color: pink;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .sticky-nav.scrolled .logo,
+    .sticky-nav.scrolled .navBtn {
+        color: #000;
+    }
+    .sticky-nav.scrolled .pi {
+        color: #000 !important;
+    }
+    #minicart{
+        position:fixed;
+        top:60px;
+        right:10px;
+        z-index:1000;
+    }
     .bannertitle{
         position:absolute;
         font-family: serif;
@@ -230,6 +272,9 @@ export default {
     z-index: 10;
     cursor:pointer;
 }
+.pi:hover{
+    color: #F77E8A;
+}
 
 img {
     width: 100%;
@@ -237,20 +282,23 @@ img {
     object-fit: cover;
 }
 
-    .dropdown{
+    .dropdown {
         display: flex;
-        gap:50px;
+        gap: 50px;
     }
-    .dropdown-menu{
+    .dropdown-menu {
         display: none;
-        background:#F77E8A;
+        background: black;
         line-height: 40px;
-        padding:16px;
-        width:200px;
-        height:auto;
+        padding: 16px;
+        width: 100vw;
+        height: auto;
+        position: fixed;
+        left: 0;
+        top: 60px; /* Adjust based on your navbar height */
     }
-    .dropdown-menu:hover{
-        display: block; 
+    .dropdown-menu:hover {
+        display: block;
     }
     .dropdown-down:hover .dropdown-menu {
         display: block;
