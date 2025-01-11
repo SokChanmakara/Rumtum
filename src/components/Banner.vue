@@ -326,7 +326,7 @@ export default {
 
 }
 .pi:hover{
-    color: #F77E8A;
+    color: #F77E8A !important;
 }
 
 img {
