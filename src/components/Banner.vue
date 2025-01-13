@@ -8,10 +8,10 @@
     <div class="banner-container">
         <div class="imgWrapper">
             <div class="banner banner1">
-                <img src="@/assets/boingirl1.png" alt="">
+                <img src="@/assets/boingirl2.png" alt="">
             </div>
             <div class="banner banner2">
-                <img src="@/assets/boingirl2.png" alt="">
+                <img src="@/assets/boingirl1.png" alt="">
                 <div class="bannertitle">
                     <h1 class="bannertitle1">Take Your Style</h1>
                 </div><div class="bannertitle2">
@@ -19,7 +19,7 @@
                 </div>
                 
             </div>
-            <div class="banner banner1">
+            <div class="banner banner2">
                 <img src="@/assets/boingirl1.png" alt="">
             </div>
             </div>
@@ -114,13 +114,17 @@
 
 
 <script>
+
 import Navbar from './Navbar.vue'
 import ButtonShop from './Button/ButtonShop.vue';
 import MiniCart from './MiniCartPage/MiniCart.vue';
 import { useWishlistStore } from '@/stores/wishlist';
 import { storeToRefs } from 'pinia';
+import MenHomeView from '@/views/MenHomeView.vue';
+import WomenHomeview from '@/views/WomenHomeview.vue';
 export default {
     components:{
+
         Navbar,
         ButtonShop,
         MiniCart

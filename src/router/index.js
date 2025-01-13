@@ -60,11 +60,6 @@ const router = createRouter({
       name:'checkoutPage',
       component:Checkout
     },
-    // {
-    //   path:'/menbanner',
-    //   name:'Menbanner',
-    //   component:MenBanner
-    // },
     {
       path:'/menhomeview',
       name:'Menhomeview',
