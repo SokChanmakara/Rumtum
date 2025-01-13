@@ -3,7 +3,27 @@
             <div class="logo-box">
                 <h1 class="logo">RUMTUM</h1>
             </div>
-        </div>
+    </div>
+
+    <div class="banner-container">
+        <div class="imgWrapper">
+            <div class="banner banner1">
+                <img src="@/assets/boingirl1.png" alt="">
+            </div>
+            <div class="banner banner2">
+                <img src="@/assets/boingirl2.png" alt="">
+                <div class="bannertitle">
+                    <h1 class="bannertitle1">Take Your Style</h1>
+                </div><div class="bannertitle2">
+                    <h1 class="">To The Next Level</h1>
+                </div>
+                
+            </div>
+            <div class="banner banner1">
+                <img src="@/assets/boingirl1.png" alt="">
+            </div>
+            </div>
+
 
         <div class="navwrapper">
             <div class="navcategory">
@@ -89,6 +109,7 @@
         <div >
             <ButtonShop/>
         </div>
+    </div>
 </template>
 
 
