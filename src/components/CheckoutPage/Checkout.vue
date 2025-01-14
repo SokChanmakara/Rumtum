@@ -17,6 +17,7 @@
               placeholder="Email"
               class="input"
             >
+            <p v-if="errors.email" class="error">{{ errors.email }}</p>
           </section>
   
           <section class="sec">
@@ -53,12 +54,14 @@
                 placeholder="First Name"
                 class="input"
               >
+              <p v-if="errors.firstName" class="error">{{ errors.firstName }}</p>
               <input 
                 type="text" 
                 v-model="form.lastName" 
                 placeholder="Last Name"
                 class="input"
               >
+              <p v-if="errors.lastName" class="error">{{ errors.lastName }}</p>
             </div>
   
             <input 
@@ -67,6 +70,7 @@
               placeholder="Address"
               class="input"
             >
+            <p v-if="errors.address" class="error">{{ errors.address }}</p>
             <input 
               type="text" 
               v-model="form.apartment" 
@@ -81,6 +85,7 @@
                 placeholder="City"
                 class="input"
               >
+              <p v-if="errors.city" class="error">{{ errors.city }}</p>
               <input 
                 type="text" 
                 v-model="form.postal" 
@@ -110,6 +115,7 @@
                 placeholder="Card number"
                 class="input"
               >
+              <p v-if="errors.cardNumber" class="error">{{ errors.cardNumber }}</p>
               <div class="row">
                 <input 
                   type="text" 
@@ -117,12 +123,14 @@
                   placeholder="Expiration date (MM/YY)"
                   class="input"
                 >
+                <p v-if="errors.expiry" class="error">{{ errors.expiry }}</p>
                 <input 
                   type="text" 
                   v-model="form.security" 
                   placeholder="Security code"
                   class="input"
                 >
+                <p v-if="errors.security" class="error">{{ errors.security }}</p>
               </div>
               <input 
                 type="text" 
@@ -190,6 +198,7 @@
   import { ref, computed } from 'vue'
   import { useProductStore} from '@/stores/product'
   const productStore = useProductStore();
+  const errors = ref({})
   const form = ref({
     email: '',
     delivery: 'ship',
@@ -208,7 +217,54 @@
     nameCard: '',
     sameAddress: false
   })
-  
+  const validateForm = () =>{
+    const errorMessages = {}
+    if (!form.value.email) errorMessages.email = "Email is required.";
+    
+    if (!form.value.firstName) {
+    errorMessages.firstName = "First Name is required.";
+    } else if (/\d/.test(form.value.firstName)) {
+    errorMessages.firstName = "First Name cannot contain numbers.";
+    }
+    if (!form.value.lastName) {
+    errorMessages.lastName = "Last Name is required.";
+    } else if (/\d/.test(form.value.lastName)) {
+    errorMessages.lastName = "Last Name cannot contain numbers.";
+    }
+
+    if (!form.value.address) errorMessages.address = "Address is required.";
+    if (!form.value.city) errorMessages.city = "City is required.";
+
+    if (!form.value.cardNumber) {
+    errorMessages.cardNumber = "Card number is required.";
+  } else if (!/^\d{16}$/.test(form.value.cardNumber)) {
+    errorMessages.cardNumber = "Card number must be 16 digits.";
+  }
+
+  if (!form.value.security) {
+    errorMessages.security = "Security code is required.";
+  } else if (!/^\d{3}$/.test(form.value.security)) {
+    errorMessages.security = "Security code must be 3 digits.";
+  }
+
+  if (!form.value.expiry) {
+    errorMessages.expiry = "Expiration date is required.";
+  } else {
+    const [month, year] = form.value.expiry.split("/").map(Number);
+    const currentYear = new Date().getFullYear() % 100; // Last two digits
+    const currentMonth = new Date().getMonth() + 1;
+
+    if (month < 1 || month > 12) {
+      errorMessages.expiry = "Invalid month in expiration date.";
+    } else if (year < currentYear || (year === currentYear && month < currentMonth)) {
+      errorMessages.expiry = "Expiration date is in the past.";
+    }
+  }
+
+  errors.value = errorMessages;
+  return Object.keys(errorMessages).length === 0;
+
+  }
   const cart = ref([
     {
       id: 1,
@@ -245,11 +301,20 @@
   }
   
   const submitOrder = () => {
+    if(!validateForm()){
+      console.log("Form validation failed:",errors.value)
+    }
     console.log('Submitting order:', form.value)
   }
   </script>
   
   <style scoped>
+  .error {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+  }
   .page {
     font-family: Arial, sans-serif;
   }

@@ -12,7 +12,7 @@
       <h1 class="title">WishList</h1>
       
       <div class="list">
-        <div v-for="item in wishlistItems" :key="item.id" class="item">
+        <div v-for="item in wishlistItems" :key="item.id" class="item" @click="gotoProductView(item.id)">
           <div class="img-wrap">
             <img :src="item.image" :alt="item.name" class="img">
             <button @click="removeItem(item.id)" class="del">×</button>
@@ -39,18 +39,23 @@
   
   <script>
   import { useWishlistStore } from '@/stores/wishlist';
-import { storeToRefs } from 'pinia';
+  import { storeToRefs } from 'pinia';
+  import { useRouter } from 'vue-router';
   export default {
     setup(){
       const wishlistStore = useWishlistStore();
       const {wishlist} = storeToRefs(wishlistStore);
-
+      const router = useRouter();
       const removeItem = (id) => {
         wishlistStore.removeFromWishlist(id);
       };
+      const gotoProductView = (productId) => {
+        router.push({name: 'ProductView', params:{productId}})
+      }
       return{
         wishlistItems:wishlist,
         removeItem,
+        gotoProductView
       }
     }
   }

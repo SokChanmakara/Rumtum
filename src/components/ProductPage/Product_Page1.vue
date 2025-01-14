@@ -78,10 +78,13 @@
             <input type="number" v-model="quantity" min="1" />
             <button @click="incrementQuantity">+</button>
           </div>
-          <button class="cart">ADD TO CART</button>
+          <router-link to="/cart">
+            <button class="cart" @click="addtoCart">ADD TO CART</button>
+          </router-link>
         </div>
-
-        <button class="buy">BUY IT NOW</button>
+        <router-link to="/checkout">
+          <button class="buy">BUY IT NOW</button>
+        </router-link>
 
         <div class="payment">
           <h3>GUARANTEED SAFE CHECKOUT</h3>
@@ -157,7 +160,9 @@ const toggleWishlist = () => {
 
 const route = useRoute()
 const productStore = useProductStore()
-
+const addtoCart = () => {
+  productStore.addCart(product.value)
+}
 const product = computed(() => productStore.products.find(p => p.id === route.params.productId))
 
 </script>
@@ -330,6 +335,8 @@ const product = computed(() => productStore.products.find(p => p.id === route.pa
 
 .cart {
   flex: 1;
+  padding:20px;
+  width:210px;
   background: #000;
   color: white;
   border: none;

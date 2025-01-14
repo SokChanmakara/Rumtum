@@ -3,13 +3,13 @@
         <div class="icon-wrapper" :style="{ opacity: isHovered ? 1 : 0 }" 
             @mouseenter="isHovered = true" 
             @mouseleave="isHovered = false">
-            <div class="icon-text" @click="toggleWishList">
+            <div class="icon-text" @click.stop="toggleWishList">
                 <div class="icon">
                     <i class="pi pi-heart" :class="{'active': isInWishlist}"></i>
                 </div>
                 <p>{{ isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}}</p>
             </div>
-            <div class="icon-text" @click="toggleMiniCart(product)" >
+            <div class="icon-text" @click.stop="toggleMiniCart(product)" >
                 <div class="icon">
                     <i class="pi pi-shopping-cart"></i>
                 </div>
@@ -22,7 +22,7 @@
                 <p>Quick View</p>
             </div>
         </div>
-        <div v-if="showMiniCart" >
+        <div v-if="showMiniCart" @click.stop >
             <MiniCart @close="toggleMiniCart(product)"/>
         </div>
         <img v-else :src="isHovered ? Himage : images" :alt="name" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
@@ -98,7 +98,7 @@ export default {
             const product = {
                 id: props.id,
                 name: props.name,
-                price: parseFloat(props.price.replace('$', '')),
+                price: props.price,
                 image: props.images,
                 colors: [props.pri_color, props.sec_color, props.ter_color].filter(Boolean)
             };
@@ -118,6 +118,9 @@ export default {
         toggleMiniCart(item){
             this.productStore.addCart(item)
             this.showMiniCart = !this.showMiniCart;
+        },
+        gotoProductView(){
+            this.$emit('click')
         }
     },
     components:{
