@@ -13,8 +13,8 @@
           You have got FREE SHIPPING
         </div>
         <div class="items">
-          <div v-for="item in lilcartItems" :key="item.id" class="item">
-            <img :src="item.image" :alt="item.name" class="img">
+          <div v-for="item in productStore.cart" :key="item.id" class="item">
+            <img :src="item.images" :alt="item.name" class="img">
             <div class="info">
               <h3 class="name">{{ item.name }}</h3>
               <p class="var">{{ item.color }} / {{ item.size }}</p>
@@ -24,8 +24,8 @@
               <button @click="decrementQuantity(item)" class="btn">-</button>
               <input type="number" v-model="item.quantity" min="1" class="num">
               <button @click="incrementQuantity(item)" class="btn">+</button>
-            </div>
-            <p class="price">${{ (item.price * item.quantity).toFixed(2) }}</p>
+            </div>  
+            <p class="price">${{ item.price * item.quantity }}</p>
           </div>
         </div>
         <div class="total">
@@ -46,7 +46,11 @@
   </template>
   
   <script setup>
-  import { ref, computed, defineEmits } from 'vue'
+  import { useProductStore } from '@/stores/product'
+import { ref, computed, defineEmits, watch } from 'vue'
+
+  const productStore = useProductStore();
+
   
   const lilcartItems = ref([
     {
@@ -70,11 +74,11 @@
   ])
   
   const totalItems = computed(() => {
-    return lilcartItems.value.reduce((total, item) => total + item.quantity, 0)
+    return productStore.cart.reduce((total, item) => total + item.quantity, 0)
   })
   
   const subtotal = computed(() => {
-    return lilcartItems.value.reduce((total, item) => total + item.price * item.quantity, 0)
+    return productStore.cart.reduce((total, item) => total + item.price * item.quantity, 0)
   })
   
   const incrementQuantity = (item) => {
@@ -88,9 +92,9 @@
   }
   
   const removeItem = (id) => {
-    const index = lilcartItems.value.findIndex(item => item.id === id)
+    const index = productStore.cart.findIndex(item => item.id === id)
     if (index !== -1) {
-      lilcartItems.value.splice(index, 1)
+      productStore.cart.splice(index, 1)
     }
   }
   const emit = defineEmits(['close'])
@@ -234,5 +238,8 @@
     background-color: white;
     color: black;
     border: 1px solid black;
+  }
+  input[type = 'number']{
+    width:50px
   }
   </style>

@@ -23,9 +23,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in cartItems" :key="item.id">
+          <tr v-for="item in productStore.cart" :key="item.id">
             <td class="prod">
-              <img :src="item.image" :alt="item.name" class="img">
+              <img :src="item.images" :alt="item.name" class="img">
               <div class="info">
                 <h3>{{ item.name }}</h3>
                 <p>Color: {{ item.color }}</p>
@@ -103,7 +103,9 @@
   </template>
   
   <script setup>
+  import { useProductStore } from '@/stores/product'
   import { ref, computed } from 'vue'
+  const productStore = useProductStore(); 
   
   const cartItems = ref([
     {

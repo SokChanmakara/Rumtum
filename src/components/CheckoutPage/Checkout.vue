@@ -145,8 +145,8 @@
   
         <div class="sum">
           <div class="items">
-            <div v-for="item in cart" :key="item.id" class="item">
-              <img :src="item.image" :alt="item.name" class="img">
+            <div v-for="item in productStore.cart" :key="item.id" class="item">
+              <img :src="item.images" :alt="item.name" class="img">
               <div class="info">
                 <h3>{{ item.name }}</h3>
                 <p>Color: {{ item.color }}</p>
@@ -168,7 +168,7 @@
   
           <div class="total">
             <div class="row">
-              <span>Subtotal • {{ cart.length }} items</span>
+              <span>Subtotal • {{ productStore.cart.length }} items</span>
               <span>${{ subtotal }}</span>
             </div>
             <div class="row">
@@ -188,7 +188,8 @@
   
   <script setup>
   import { ref, computed } from 'vue'
-  
+  import { useProductStore} from '@/stores/product'
+  const productStore = useProductStore();
   const form = ref({
     email: '',
     delivery: 'ship',
@@ -230,7 +231,7 @@
   const discountCode = ref('')
   
   const subtotal = computed(() => {
-    return cart.value.reduce((sum, item) => sum + item.price, 0)
+    return productStore.cart.reduce((sum, item) => sum + item.price, 0)
   })
   
   const shipping = ref(1.50)

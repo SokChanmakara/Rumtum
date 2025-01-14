@@ -9,7 +9,7 @@
                 </div>
                 <p>{{ isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}}</p>
             </div>
-            <div class="icon-text" @click="toggleMiniCart" >
+            <div class="icon-text" @click="toggleMiniCart(product)" >
                 <div class="icon">
                     <i class="pi pi-shopping-cart"></i>
                 </div>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div v-if="showMiniCart" >
-            <MiniCart @click="toggleMiniCart"/>
+            <MiniCart @close="toggleMiniCart(product)"/>
         </div>
         <img v-else :src="isHovered ? Himage : images" :alt="name" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <div class="color-picker">
@@ -33,12 +33,13 @@
         </div>
         <div class="name">
             <p>{{name}}</p>
-            <p id="price">{{ price }}</p>
+            <p id="price">${{ price }}</p>
         </div>
     </div>
 </template>
 
 <script>
+import { useProductStore } from '@/stores/product';
 import MiniCart from './MiniCartPage/MiniCart.vue';
 import { useWishlistStore } from '@/stores/wishlist';
 import { computed } from 'vue';
@@ -77,7 +78,8 @@ export default {
         Himage: {
             type: String,
             required:false
-        }
+        },
+        product: Object,
     },
     data() {
         return {
@@ -87,6 +89,7 @@ export default {
         };
     },
     setup(props){
+        const productStore = useProductStore();
         const wishlistStore = useWishlistStore();
         const isInWishlist = computed (() => 
             wishlistStore.wishlist.some(item => item.id === props.id)
@@ -95,7 +98,7 @@ export default {
             const product = {
                 id: props.id,
                 name: props.name,
-                price: parseFloat(props.price.replace('$', '')),
+                price: parseFloat(String(props.price).replace('$', '')),
                 image: props.images,
                 colors: [props.pri_color, props.sec_color, props.ter_color].filter(Boolean)
             };
@@ -107,11 +110,13 @@ export default {
         };
         return {
             toggleWishList,
-            isInWishlist
+            isInWishlist,
+            productStore,
         }
     },
     methods:{
-        toggleMiniCart(){
+        toggleMiniCart(item){
+            this.productStore.addCart(item)
             this.showMiniCart = !this.showMiniCart;
         }
     },

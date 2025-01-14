@@ -14,6 +14,7 @@
             :images="product.images"
             :Himage="product.Himage"
             :key="product.name"
+            :product="product"
             />
     </div>
 
@@ -49,19 +50,19 @@
     const cards = ref([
         {
             title: 'Walk In Style',
-            image: "../src/assets/images/card1.png"
+            image: "/src/assets/images/card1.png"
         },
         {
             title: 'Dress In Style',
-            image: "../src/assets/images/card2.png"
+            image: "/src/assets/images/card2.png"
         },
         {
             title: 'Stand In Style',
-            image: "../src/assets/images/card3.png"
+            image: "/src/assets/images/card3.png"
         },
         {
             title: 'Pair In Style',
-            image: "../src/assets/images/card4.png"
+            image: "/src/assets/images/card4.png"
         }
     ]);
     
@@ -69,143 +70,153 @@
         {   
             id: "1",
             name: 'Cropped Ribbed',
-            price: '$120.00',
+            quantity: 5,
+            price: 120.00,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product1.png",
-            Himage: "../src/assets/images/Productone.png"
+            images: "/src/assets/images/Product1.png",
+            Himage: "/src/assets/images/Productone.png"
         },
         {   
             id: "2",
             name: 'Women Shorts',
-            price: '$100.00',
+            price: 100.00,
+            quantity: 10,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product2.png",
-            Himage: "../src/assets/images/Producttwo.png"
+            images: "/src/assets/images/Product2.png",
+            Himage: "/src/assets/images/Producttwo.png"
         },
         {   
             id: "3",
             name: 'Sneakers Girl',
-            price: '$220.00',
+            price: 220.00,
+            quantity: 2,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             ter_color: '#115C1E',
-            images: "../src/assets/images/Product3.png",
-            Himage: "../src/assets/images/Productthree.png"
+            images: "/src/assets/images/Product3.png",
+            Himage: "/src/assets/images/Productthree.png"
         },
         {   
             id: "4",
             name: 'Metal Buckles Skinny Belt',
-            price: '$24.00',
+            price: 24.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product4.png",
-            Himage: "../src/assets/images/Productfour.png"
+            images: "/src/assets/images/Product4.png",
+            Himage: "/src/assets/images/Productfour.png"
         },
         {   
             id: "5",
             name: 'Emotion Mini Dress',
-            price: '$110.00',
+            price: 110.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product5.png",
-            Himage: "../src/assets/images/Productfive.png"
+            images: "/src/assets/images/Product5.png",
+            Himage: "/src/assets/images/Productfive.png"
         }, 
         {   
             id: "6",
             name: 'Cropped Ribbed',
-            price: '$120.00',
+            price: 120.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product6.png",
-            Himage: "../src/assets/images/Productsix.png"
+            images: "/src/assets/images/Product6.png",
+            Himage: "/src/assets/images/Productsix.png"
         },
         {   
             id: "7",
             name: 'Women Shorts',
-            price: '$100.00',
+            price: 100.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product7.png",
-            Himage: "../src/assets/images/Productseven.png"
+            images: "/src/assets/images/Product7.png",
+            Himage: "/src/assets/images/Productseven.png"
         },
         {   
             id: "8",
             name: 'Sneakers Girl',
-            price: '$220.00',
+            price: 220.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             ter_color: '#115C1E',
-            images: "../src/assets/images/Product8.png",
-            Himage: "../src/assets/images/Producteight.png"
+            images: "/src/assets/images/Product8.png",
+            Himage: "/src/assets/images/Producteight.png"
         },
         {   
             id: "9",
             name: 'Metal Buckles Skinny Belt',
-            price: '$24.00',
+            price: 24.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product9.png",
-            Himage: "../src/assets/images/Productnine.png"
+            images: "/src/assets/images/Product9.png",
+            Himage: "/src/assets/images/Productnine.png"
         },
         {   
             id: "10",
             name: 'Emotion Mini Dress',
-            price: '$110.00',
+            price: 110.00,
+            quantity:1,
             pri_color: '#E30B0B',
             sec_color: '#000000',
             // ter_color: '#115C1E',
-            images: "../src/assets/images/Product10.png",
-            Himage: "../src/assets/images/Productten.png"
+            images: "/src/assets/images/Product10.png",
+            Himage: "/src/assets/images/Productten.png"
         },
     ]);
 
     const comments = ref([
     {
-      avatar: '../src/assets/images/C1.png',
+      avatar: '/src/assets/images/C1.png',
       title: 'Feature Availability',
       text: 'This is a wonderful theme. Very easy to use. Very easy to customize. The new version has lots of great additions and is still easy to work with. Also, customer service excellent!',
       name: 'SIMON WILLIAMS',
       rating: 4
     },
     {
-      avatar: '../src/assets/images/C2.png',
+      avatar: '/src/assets/images/C2.png',
       title: 'Theme Flexibility',
       text: 'This is a wonderful theme. Very easy to use. Very easy to customize. The new version has lots of great additions and is still easy to work with. Also, customer service excellent!',
       name: 'ROSSY OGAWA',
       rating: 4
     },
     {
-      avatar: '../src/assets/images/C3.png',
+      avatar: '/src/assets/images/C3.png',
       title: 'Incredible UI/UX',
       text: 'This is a wonderful theme. Very easy to use. Very easy to customize. The new version has lots of great additions and is still easy to work with. Also, customer service excellent!',
       name: 'AUTHOR\'S NAME',
       rating: 3
     },
     {
-      avatar: '../src/assets/images/C4.png',
+      avatar: '/src/assets/images/C4.png',
       title: 'Excellent Support',
       text: 'The customer support for this theme is outstanding. Quick responses and always helpful. It\'s refreshing to see such dedication to customer satisfaction.',
       name: 'EMMA JOHNSON',
       rating: 5
     },
     {
-      avatar: '../src/assets/images/C5.png',
+      avatar: '/src/assets/images/C5.png',
       title: 'Great Performance',
       text: 'I\'m impressed with how fast and smooth this theme runs. It\'s clear that a lot of optimization work has gone into it. My website has never been faster!',
       name: 'MICHAEL CHEN',
       rating: 4
     },
     {
-      avatar: '../src/assets/images/C6.png',
+      avatar: '/src/assets/images/C6.png',
       title: 'Easy Customization',
       text: 'As someone with limited coding experience, I found this theme incredibly easy to customize. The documentation is clear, and the options are intuitive.',
       name: 'SOPHIA RODRIGUEZ',
