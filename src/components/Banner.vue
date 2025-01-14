@@ -350,8 +350,12 @@ img {
         height: auto;
         position: fixed;
         left: 0;
-        top: 60px; /* Adjust based on your navbar height */
+        top: 60px; 
     }
+    .dropdown-item:hover{
+        font-size:large;
+    }
+    .dropdown-down:hover .dropdown-menu,
     .dropdown-menu:hover {
         display: block;
     }

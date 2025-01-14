@@ -1,44 +1,59 @@
 <template>
-    <div class="account">
-      <main class="main">
-        <h1 class="title">My Account</h1>
-        
-        <div class="info">
-          <p class="welcome">Welcome <strong>Momo Ayase!</strong></p>
-          <div class="menu">
-            <a href="#" @click.prevent="activeTab = 'orders'" :class="['menu-link', { active: activeTab === 'orders' }]">Order History</a>
-            <span class="sep">|</span>
-            <a href="#" @click.prevent="activeTab = 'addresses'" :class="['menu-link', { active: activeTab === 'addresses' }]">Addresses</a>
-            <span class="sep">|</span>
-            <a href="#" class="menu-link">Log out</a>
-          </div>
+  <div class="account">
+    <main class="main">
+      <div>
+        <router-link to="/">
+          <div id="home">Home</div>
+        </router-link>
+        <div>
+          <h1 class="title">My Account</h1>
         </div>
-  
-        <hr class="divider">
-  
-        <section v-if="activeTab === 'addresses'" class="addresses">
-          <h2 class="section-title">Addresses</h2>
-          <p class="address">
-            Momo Ayase<br>
-            Cambodia
-          </p>
-        </section>
-  
-        <section v-if="activeTab === 'orders'" class="orders">
-          <h2 class="section-title">Order History</h2>
-          <p class="no-orders">You haven't placed any orders yet !</p>
-        </section>
-      </main>
-    </div>
-  </template>
+      </div>
+      
+      <div class="info">
+        <p class="welcome">Welcome <strong>{{ userStore.user ? userStore.user.name : 'Guest' }}!</strong></p>
+        <div class="menu">
+          <a href="#" @click.prevent="activeTab = 'orders'" :class="['menu-link', { active: activeTab === 'orders' }]">Order History</a>
+          <span class="sep">|</span>
+          <a href="#" @click.prevent="activeTab = 'addresses'" :class="['menu-link', { active: activeTab === 'addresses' }]">Addresses</a>
+          <span class="sep">|</span>
+          <a href="#" class="menu-link" @click="userStore.user ? userStore.clearUser() : $router.push('/login')">
+        {{ userStore.user ? 'Log out' : 'Sign up or Login' }}
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <section v-if="activeTab === 'addresses'" class="addresses">
+        <h2 class="section-title">Addresses</h2>
+        <p class="address">
+          {{ userStore.user ? userStore.user.name : 'Guest' }}<br>
+          Cambodia
+        </p>
+      </section>
+
+      <section v-if="activeTab === 'orders'" class="orders">
+        <h2 class="section-title">Order History</h2>
+        <p class="no-orders">You haven't placed any orders yet !</p>
+      </section>
+    </main>
+  </div>
+</template>
   
   <script setup>
-  import { ref } from 'vue'
+  import { ref } from 'vue';
+  import { useUserStore } from '@/stores/user';
   
-  const activeTab = ref('addresses')
+  const activeTab = ref('addresses');
+  const userStore = useUserStore();
   </script>
   
   <style scoped>
+  #home{
+    font-size: 20px;
+    font-weight: bold;
+  }
   .account {
     max-width: 1300px;
     margin: 0 auto;

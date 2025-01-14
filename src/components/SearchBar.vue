@@ -84,6 +84,7 @@ body {
     width: 100%;
     margin: auto;
     padding: 16px;
+    background:rgb(247, 232, 232);
     flex: 1;
 }
 

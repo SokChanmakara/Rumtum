@@ -52,10 +52,12 @@
   </template>
   
   <script>
-import Navbar from '../Navbar.vue';
+  import Navbar from '../Navbar.vue';
+  import { useUserStore } from '@/stores/user';
+  
   export default {
-    components:{
-      Navbar
+    components: {
+      Navbar,
     },
     data() {
       return {
@@ -64,11 +66,18 @@ import Navbar from '../Navbar.vue';
           password: "",
           rememberMe: false,
         },
+        error: null,
       };
     },
     methods: {
       submitForm() {
-        console.log(this.form);
+        const userStore = useUserStore();
+        const isAuthenticated = userStore.loginUser(this.form.email, this.form.password);
+        if (isAuthenticated) {
+          this.$router.push('/account');
+        } else {
+          this.error = "Invalid email or password";
+        }
       },
     },
   };

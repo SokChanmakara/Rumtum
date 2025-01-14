@@ -50,6 +50,8 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import { useUserStore } from '@/stores/user';
+
 export default {
   components: { Navbar },
   data() {
@@ -61,11 +63,20 @@ export default {
         password: "",
         subscribe: false,
       },
+      error: null,
     };
   },
   methods: {
     submitForm() {
-      console.log(this.form);
+      const userStore = useUserStore();
+      const newUser = {
+        name: `${this.form.firstName} ${this.form.lastName}`,
+        email: this.form.email,
+        password: this.form.password,
+      };
+      userStore.registerUser(newUser);
+      userStore.setUser(newUser);
+      this.$router.push('/account');
     },
   },
 };
