@@ -71,9 +71,11 @@
                 <div v-if="showSearch" class="search-bar-container" ref="searchBar">
                     <SearchBar/>
                 </div>
-                <div class="icon">
-                    <i class="pi pi-user" style="color: white"></i>
-                </div>
+                <router-link to="/account">
+                    <div class="icon">
+                        <i class="pi pi-user" style="color: white"></i>
+                    </div>
+                </router-link>
                 <router-link to="/wishlist">
                     <div class="icon">
                         <i class="pi pi-heart" style="color: white"></i>
