@@ -98,7 +98,7 @@ export default {
             const product = {
                 id: props.id,
                 name: props.name,
-                price: parseFloat(String(props.price).replace('$', '')),
+                price: parseFloat(props.price.replace('$', '')),
                 image: props.images,
                 colors: [props.pri_color, props.sec_color, props.ter_color].filter(Boolean)
             };

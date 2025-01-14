@@ -17,11 +17,11 @@
       </div>
 
       <div class="main-image">
-        <img :src="productImages[selectedImage]" alt="blah" />
+        <img :src="product.images" alt="blah" />
       </div>
 
       <div class="info">
-        <h1 class="title">Martha Knit Top</h1>
+        <h1 class="title">{{product.name}}</h1>
         
         <div class="meta">
           <span class="availability">Availability: 
@@ -31,7 +31,7 @@
         </div>
 
         <div class="price">
-          <span>$300.00</span>
+          <span>${{ product.price }}</span>
           <small>Tax Included.</small>
         </div>
 
@@ -87,9 +87,9 @@
           <h3>GUARANTEED SAFE CHECKOUT</h3>
           <div class="payment-icons">
             <img v-for="(icon, index) in paymentIcons" 
-                 :key="index" 
-                 :src="icon" 
-                 :alt="paymentMethods[index]" />
+                  :key="index" 
+                  :src="icon" 
+                  :alt="paymentMethods[index]" />
           </div>
         </div>
       </div>
@@ -98,7 +98,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useProductStore } from '@/stores/product'
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 const selectedImage = ref(0)
 const selectedColor = ref(0)
@@ -152,6 +154,11 @@ const decrementQuantity = () => {
 const toggleWishlist = () => {
   inWishlist.value = !inWishlist.value
 }
+
+const route = useRoute()
+const productStore = useProductStore()
+
+const product = computed(() => productStore.products.find(p => p.id === route.params.productId))
 
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-<Product_Page1/>
+<Product_Page1 />
 <Product_Page2/>
 <Product_Page3/>
 <footerPage/>
@@ -21,6 +21,12 @@ export default {
         Product_Page2,
         Product_Page3,
         footerPage
+    },
+
+    method: {
+        detectPage(index) {
+            return this.$route.params.productId === index;
+        }
     }
 }
 </script>
